@@ -1,0 +1,42 @@
+export default [
+  {
+    id: 100,
+    lv: "0",
+    name: "매출현황",
+    path: "",
+    icon: "ni ni-chart-bar-32 text-primary",
+    p_id: "",
+  },
+  {
+    id: 101,
+    lv: "1",
+    name: "전체매출",
+    path: "/dashmenu/totsales",
+    icon: "",
+    p_id: "100",
+  },
+  {
+    id: 102,
+    lv: "1",
+    name: "전체수금",
+    path: "/dashmenu/totmoney",
+    icon: "",
+    p_id: "100",
+  },
+  {
+    id: 103,
+    lv: "1",
+    name: "MSC매출",
+    path: "/dashmenu/mscsales",
+    icon: "",
+    p_id: "100",
+  },
+  {
+    id: 104,
+    lv: "1",
+    name: "MSC수금",
+    path: "/dashmenu/mscmoney",
+    icon: "",
+    p_id: "100",
+  },
+]
