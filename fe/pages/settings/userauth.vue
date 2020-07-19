@@ -9,7 +9,7 @@
     </base-header>
     <div class="container-fluid mt--6">
       <div class="row" >
-          <div class="col-xl-4 col-md-6">
+          <div class="col-xl-6 col-md-6">
             <card style="min-height:850px;">
               <template slot="header">
                 <!-- Title -->
@@ -212,17 +212,27 @@ export default {
         }
       }
 
-      if(this.selectedMenu.icon == 'ni ni-app'){
-        this.tableData = await this.getAuthUserData(this.selectedMenu.id);
+      var result = await this.getAuthUserData(this.selectedMenu.id);
+      if(result == ''){
+        this.tableData = [];
       }
+      else{
+        this.tableData = result;
+      }
+      
     },
     async itemClick (node) {
       this.selectedMenu.id = node.model.id;
       this.selectedMenu.name = node.model.text;
       this.selectedMenu.icon = node.model.icon;
 
-      if(this.selectedMenu.icon == 'ni ni-app'){
-        this.tableData = await this.getAuthUserData(node.model.id); 
+      
+      var result = await this.getAuthUserData(node.model.id); 
+      if(result == ''){
+        this.tableData = [];
+      }
+      else{
+        this.tableData = result; 
       }
     }
   },
