@@ -128,7 +128,7 @@ export default {
     Menutree,
   },
   async asyncData(){
-    axios.defaults.baseURL = 'http://localhost:8000/api';
+    axios.defaults.baseURL = 'http://218.38.191.120:8000/api';
 
     return await axios.get('/getMenutree')
     .then((res) => {
