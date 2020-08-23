@@ -152,6 +152,7 @@
             },
             yaxis: [
               {
+                seriesName: 'Sales',
                 tickAmount: 8,
                 decimalsInFloat: 0,
                 axisTicks: {
