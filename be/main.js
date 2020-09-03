@@ -8,13 +8,8 @@ app.use(bodyParser.json());
 
 // [Server Config]
 global.sql = require('mssql');
-global.config = {
-user: 'sa',
-password: 'sfaadmin',
-server: '192.168.0.14',
-database: 'mdb',
-charset: 'utf8mb4'
-};
+global.config = require('./config.json');
+
 
 // [CORS 허용 설정]
 app.all('/*', function(req, res, next) {
