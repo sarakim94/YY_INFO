@@ -82,8 +82,8 @@ module.exports = {
   ** Axios module configuration
   */
   axios: {
-    //baseURL: is_production ? 'https://mashup.lhy.kr/api' : 'http://localhost:8000/api',
-    baseURL: 'http://218.38.191.120:8000/api',
+    baseURL: is_production ? 'http://218.38.191.120:8000/api' : 'http://localhost:8000/api',
+    //baseURL: 'http://218.38.191.120:8000/api',
     credentials: false,
   },
 
