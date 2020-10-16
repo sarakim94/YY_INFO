@@ -1,15 +1,13 @@
 exports.data = function(req, res) {
-    sql.close();
-    sql.connect(config).then(pool => {
         var salesData = new Object();
         var series = new Array();
         var serie = new Object();
         var data = new Array();
         var tableData = new Array();
     
-        return pool.request()
+        return global.pool.request()
         .input('TYPE', req.params.type)
-        .execute('DASH_TEST')
+        .execute('DASH_TOTBOARD')
         .then(result => {
             // DASHBOARD CARD DATA
             var type = req.params.type;
@@ -22,9 +20,9 @@ exports.data = function(req, res) {
             salesData.year_goal_sales = result.recordset[0].year_goal_sales;
             salesData.year_goal_rate = result.recordset[0].year_goal_rate;
 
-            pool.request()
+            global.pool.request()
             .input('TYPE', type)
-            .execute('DASH_TEST2')
+            .execute('DASH_TOTSALES')
             .then(result => {
                 // DASHBOARD GRAPH DATA
                 var len = result.recordset.length;
@@ -85,9 +83,9 @@ exports.data = function(req, res) {
 
                 salesData.table = tableData;
 
+                //console.log(salesData);
                 res.json(salesData);
                 res.end();
             });    
         }); 
-    });
 };

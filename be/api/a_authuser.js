@@ -1,6 +1,4 @@
 exports.data = function(req, res) {
-    sql.close();
-    sql.connect(config).then(pool => {
         var id = req.params.id;
 
         var query     = "SELECT (" ;
@@ -9,12 +7,11 @@ exports.data = function(req, res) {
             query = query + "LEFT JOIN CM003M01 C ON B.DEPT_CD = C.DEPT_CD ";
             query = query + "WHERE A.PGID = @ID ORDER BY B.EMP_CD FOR JSON PATH) AS result ";
 
-        return pool.request()
+        return global.pool.request()
         .input('ID', id)
         .query(query)
         .then(async result => {
             res.send(result.recordset[0].result);
             res.end();     
         });
-    });
 };

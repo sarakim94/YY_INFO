@@ -1,6 +1,4 @@
-exports.data = function(req, res) {
-    sql.close();
-    sql.connect(config).then(async pool => {
+exports.data = async function(req, res) {
         var data = new Object();
 
         const jwt = require('jsonwebtoken');
@@ -31,7 +29,7 @@ exports.data = function(req, res) {
         }
         // 일반 사용자인 경우
         else{
-            await pool.request()
+            await global.pool.request()
             .input('ID', id)
             .input('PW', pw)
             .execute('DASH_LOGIN')
@@ -52,12 +50,12 @@ exports.data = function(req, res) {
         }
         
         
-        await pool.request()
+        await global.pool.request()
         .input('TOKEN', data.key)
         .query('SELECT * FROM DASH_TOKEN WHERE TOKEN = @TOKEN')
         .then(async result => {
             if(result.recordset.length === 0){
-                await pool.request()
+                await global.pool.request()
                 .input('TOKEN', data.key)
                 .input('ID', id)
                 .query('INSERT INTO DASH_TOKEN(TOKEN,ID) VALUES ( @TOKEN, @ID)')
@@ -72,5 +70,4 @@ exports.data = function(req, res) {
 
         res.json(data);
         res.end();
-    });
 };

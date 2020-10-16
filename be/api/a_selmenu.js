@@ -1,6 +1,4 @@
 exports.data = function(req, res) {
-    sql.close();
-    sql.connect(config).then(pool => {
         var menuData = new Array();
         var menu_h = new Object();
 
@@ -14,7 +12,7 @@ exports.data = function(req, res) {
             query = query + "FROM DASH_MENU ORDER BY ID FOR JSON PATH) AS menu ";
 
 
-        return pool.request().query(query)
+        return global.pool.request().query(query)
         .then(async result => {
             
             //var len = result.recordset.length;
@@ -37,5 +35,4 @@ exports.data = function(req, res) {
             res.send(result.recordset[0].menu);
             res.end();     
         });
-    });    
 };

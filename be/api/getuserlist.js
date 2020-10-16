@@ -1,6 +1,4 @@
 exports.data = function(req, res) {
-    sql.close();
-    sql.connect(config).then(pool => {
         var userList = new Array();
         var item = new Object();
         var child = new Array();
@@ -22,7 +20,7 @@ exports.data = function(req, res) {
         query2 = query2 + 'AND B.EMP_RE_DT IS NULL ';
         query2 = query2 + 'AND A.DEPT_CD = @ID ';
 
-        return pool.request()
+        return global.pool.request()
         .query(query)
         .then(async result => {
             var len = result.recordset.length;
@@ -36,7 +34,7 @@ exports.data = function(req, res) {
                 item.children = new Array();
 
                 var id = result.recordset[i].DEPT_CD;
-                await pool.request()
+                await global.pool.request()
                 .input('ID', id)
                 .query(query2)
                 .then(result => {
@@ -67,5 +65,4 @@ exports.data = function(req, res) {
             res.json(userList);
             res.end();     
         });
-    });    
 };

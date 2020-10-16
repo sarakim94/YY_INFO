@@ -1,6 +1,4 @@
 exports.data = function(req, res) {
-    sql.close();
-    sql.connect(config).then(pool => {
         var menuData = new Array();
         var item = new Object();
         var child = new Array();
@@ -12,7 +10,7 @@ exports.data = function(req, res) {
         var query2 = '';
         query2 = "SELECT RTRIM(ID) ID,NAME,ICON FROM DASH_MENU WHERE P_ID = @P_ID ";
 
-        return pool.request()
+        return global.pool.request()
         .query(query)
         .then(async result => {
             var len = result.recordset.length;
@@ -30,7 +28,7 @@ exports.data = function(req, res) {
 
                 var id = result.recordset[i].ID;
                 
-                await pool.request()
+                await global.pool.request()
                 .input('P_ID', id)
                 .query(query2)
                 .then(result => {
@@ -53,5 +51,4 @@ exports.data = function(req, res) {
             res.json(menuData);
             res.end();     
         });
-    });    
 };

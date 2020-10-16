@@ -1,9 +1,7 @@
-exports.data = function(req, res) {
-    sql.close();
-    sql.connect(config).then(async pool => {
+exports.data = async function(req, res) {
         console.log('a_delauth api !');
                 
-        await pool.request()
+        await global.pool.request()
         .input('EMP_CD', req.body.emp_cd)
         .input('PGID', req.body.pgid)
         .query('DELETE DASH_MENU_AUTH WHERE EMP_CD = @EMP_CD AND PGID = @PGID ')
@@ -11,5 +9,4 @@ exports.data = function(req, res) {
         .catch(err => {
             console.log(err.message);
         })
-    });
 };

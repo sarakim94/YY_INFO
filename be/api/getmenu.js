@@ -1,6 +1,4 @@
 exports.data = function(req, res) {
-    sql.close();
-    sql.connect(config).then(pool => {
         var id = req.params.id;
         var menuData = new Array();
         var menu = new Object();
@@ -18,7 +16,7 @@ exports.data = function(req, res) {
         
         console.log('GET MENU API Start~');
 
-        return pool.request()
+        return global.pool.request()
         .query('SELECT ID,NAME,ICON FROM DASH_MENU WHERE LV = 0 ORDER BY ID')
         .then(async result => {
             var len = result.recordset.length;
@@ -37,7 +35,7 @@ exports.data = function(req, res) {
                 menu.detail = new Array();
                 
                 var pgid = result.recordset[i].ID;
-                await pool.request()
+                await global.pool.request()
                 .input('EMP_CD', id)
                 .input('PGID', pgid)
                 .query(query)
@@ -56,10 +54,9 @@ exports.data = function(req, res) {
                 })
             }
             
-            //console.log(menuData);
+            console.log(menuData);
 
             res.json(menuData);
             res.end();     
         });
-    });    
 };

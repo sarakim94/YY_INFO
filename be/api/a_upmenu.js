@@ -1,9 +1,7 @@
 exports.data = async function(req, res) {
-    sql.close();
-    sql.connect(config).then(async pool => {
         console.log('a_upmenu api !');
             
-        await pool.request()
+        await global.pool.request()
         .input('LV', req.body.lv)
         .input('NAME', req.body.name)
         .input('PATH', req.body.path)
@@ -15,5 +13,4 @@ exports.data = async function(req, res) {
         .catch(err => {
             console.log(err.message);
         })
-    });    
 };

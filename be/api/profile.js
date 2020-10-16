@@ -1,6 +1,4 @@
 exports.data = function(req, res) {
-    sql.close();
-    sql.connect(config).then(pool => {
         var authorization = req.headers.authorization;
         var token_array = authorization.split(' ');
         var token = token_array[1];
@@ -24,7 +22,7 @@ exports.data = function(req, res) {
             query = query + 'WHERE A.ID = @ID ';
 
             
-            return pool.request()
+            return global.pool.request()
             .input('ID',id)
             .query(query)
             .then(result => {
@@ -41,5 +39,4 @@ exports.data = function(req, res) {
         }catch(err){
             res.sendStatus(403);
         }
-    });    
 };
