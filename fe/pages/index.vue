@@ -1,404 +1,223 @@
 <template>
-  <div>
-    <base-header class="pb-6" type="">
-      <!-- Card stats -->
-      <div class="row mt-4">
-        <div class="col-xl-3 col-md-6">
-          <div class="card bg-gradient-primary border-0">
-            <!-- Card body -->
-            <div class="card-body">
-              <div class="mb-3 row">
-                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0 text-white">월 매출</h5>
-                  <span class="h2 font-weight-bold mb-0 text-white"> {{ ApexData.mon_sales | currency }} <br /> </span> 
+    <div>
+        <div class="position-relative">
+            <!-- shape Hero -->
+            <section class="section section-lg section-shaped overflow-hidden my-0">
+                <div class="shape shape-style-1 shape-secondary shape-skew">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
-              </div>
-              <span v-if="ApexData.mon_sales_up < 0" class="text-warning mr-2"><i class="fa fa-arrow-down"></i> {{ ApexData.mon_sales_up | fixed }}% <br /> </span>
-              <span v-else class="text-success mr-2"><i class="fa fa-arrow-up"></i> {{ ApexData.mon_sales_up | fixed }}% <br /> </span>
-              <span class="h4 font-weight-bold mb-0 text-white">Since last month</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-          <div class="card bg-gradient-info border-0">
-            <!-- Card body -->
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0 text-white">월 목표 달성률</h5>
-                  <span class="h2 font-weight-bold mb-0 text-white"> {{ ApexData.mon_goal_sales | currency }} </span>
-                  <div class="mt-3">
-                    <span class="h2 font-weight-bold mb-0 text-white">{{ ApexData.mon_goal_rate | fixed }}%</span>
-                    <base-progress class="progress-xs mt-3 mb-0" type="success" :value="ApexData.mon_goal_rate" ></base-progress>
-                  </div>
+                <div class="container py-0 pb-lg">
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col-lg-5 mb-5 mb-lg-0">
+                            <h2 class="text-white display-3">Yooyoung System Operation.</h2>
+                            
+                            <p class="lead text-white mt-4">We run a stable server system for yooyoung pharm. Also develop and maintain ERP, SFA, and MES System.</p>
+                        </div>
+                        <div class="col-lg-6 mb-lg-auto">
+                            <div class="rounded shadow-lg overflow-hidden transform-perspective-right">
+                                <b-carousel id="carousel1"
+                                            controls
+                                            indicators>
+                                    <!-- Text slides with image -->
+                                    <b-carousel-slide img-src="img/about/sfa.jpg"></b-carousel-slide>
+                                    <b-carousel-slide img-src="img/about/erp.jpg"></b-carousel-slide>
+                                    <b-carousel-slide img-src="img/about/sfa.jpg"></b-carousel-slide>
+                                    <b-carousel-slide img-src="img/about/erp.jpg"></b-carousel-slide>
+                                </b-carousel>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
+            </section>
+            <!-- 1st Hero Variation -->
         </div>
-        <div class="col-xl-3 col-md-6">
-          <div class="card bg-gradient-default border-0">
-            <!-- Card body -->
-            <div class="card-body">
-              <div class="mb-3 row">
-                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0 text-white">연 매출</h5>
-                  <span class="h2 font-weight-bold mb-0 text-white">{{ ApexData.year_sales | currency }} <br /> </span> 
+        <section class="mt-4 section section-lg">
+            <div class="container">
+                <div class="row justify-content-center text-center mb-lg">
+                    <div class="col-lg-8">
+                        <h2 class="display-3">The amazing Team</h2>
+                                  <br />
+                        <p class="lead text-muted">We are a key IT talent for Yoo Young Pharm.</p>
+                                  <br />          <br />
+                    </div>
                 </div>
-              </div>
-              <span v-if="ApexData.year_sales_up < 0" class="text-warning mr-2"><i class="fa fa-arrow-down"></i> {{ ApexData.year_sales_up | fixed }}% <br /> </span>
-              <span v-else class="text-success mr-2"><i class="fa fa-arrow-up"></i> {{ ApexData.year_sales_up | fixed }}% <br /> </span>
-              <span class="h4 font-weight-bold mb-0 text-white">Since last year</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-          <div class="card bg-gradient-danger border-0">
-            <!-- Card body -->
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0 text-white">연 목표 달성률</h5>
-                  <span class="h2 font-weight-bold mb-0 text-white">{{ ApexData.year_goal_sales | currency }}</span>
-                  <div class="mt-3">
-                    <span class="h2 font-weight-bold mb-0 text-white">{{ ApexData.year_goal_rate | fixed }}%</span>
-                    <base-progress class="progress-xs mt-3 mb-0" type="success" :value="ApexData.year_goal_rate" ></base-progress>
-                  </div>
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+                        <div class="px-4">
+                            <img v-lazy="'img/team'"
+                                 class="rounded-circle img-center img-fluid shadow shadow-lg--hover"
+                                 style="width: 200px;">
+                            <div class="pt-4 text-center">
+                                <h5 class="title">
+                                    <span class="d-block mb-1">Lee ChulWoo</span>
+                                    <small class="h6 text-muted">System Administrator</small>
+                                </h5>
+                                <div class="mt-3">
+                                    <base-button tag="a" href="javascript:void(0)" type="warning" icon="fa fa-twitter" rounded
+                                                 icon-only></base-button>
+                                    <base-button tag="a" href="javascript:void(0)" type="warning" icon="fa fa-facebook" rounded
+                                                 icon-only></base-button>
+                                    <base-button tag="a" href="javascript:void(0)" type="warning" icon="fa fa-dribbble" rounded
+                                                 icon-only></base-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+                        <div class="px-4">
+                            <img v-lazy="'img/team/'"
+                                 class="rounded-circle img-center img-fluid shadow shadow-lg--hover"
+                                 style="width: 200px;">
+                            <div class="pt-4 text-center">
+                                <h5 class="title">
+                                    <span class="d-block mb-1">Choi JungHoon</span>
+                                    <small class="h6 text-muted">SFA Administrator</small>
+                                </h5>
+                                <div class="mt-3">
+                                    <base-button tag="a" href="javascript:void(0)" type="primary" icon="fa fa-twitter" rounded
+                                                 icon-only></base-button>
+                                    <base-button tag="a" href="javascript:void(0)" type="primary" icon="fa fa-facebook" rounded
+                                                 icon-only></base-button>
+                                    <base-button tag="a" href="javascript:void(0)" type="primary" icon="fa fa-dribbble" rounded
+                                                 icon-only></base-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+                        <div class="px-4">
+                            <img v-lazy="'img/team/jbs.jpg'"
+                                 class="rounded-circle img-center img-fluid shadow shadow-lg--hover"
+                                 style="width: 200px;">
+                            <div class="pt-4 text-center">
+                                <h5 class="title">
+                                    <span class="d-block mb-1">Jeon BeomSu</span>
+                                    <small class="h6 text-muted">Software Developer</small>
+                                </h5>
+                                <div class="mt-3">
+                                    <base-button tag="a" href="javascript:void(0)" type="info" icon="fa fa-twitter" rounded
+                                                 icon-only></base-button>
+                                    <base-button tag="a" href="javascript:void(0)" type="info" icon="fa fa-facebook" rounded
+                                                 icon-only></base-button>
+                                    <base-button tag="a" href="javascript:void(0)" type="info" icon="fa fa-dribbble" rounded
+                                                 icon-only></base-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+                        <div class="px-4">
+                            <img v-lazy="'img/team/'"
+                                 class="rounded-circle img-center img-fluid shadow shadow-lg--hover"
+                                 style="width: 200px;">
+                            <div class="pt-4 text-center">
+                                <h5 class="title">
+                                    <span class="d-block mb-1">Kim SeiHee</span>
+                                    <small class="h6 text-muted">Software Developer</small>
+                                </h5>
+                                <div class="mt-3">
+                                    <base-button tag="a" href="javascript:void(0)" type="success" icon="fa fa-twitter" rounded
+                                                 icon-only></base-button>
+                                    <base-button tag="a" href="javascript:void(0)" type="success" icon="fa fa-facebook" rounded
+                                                 icon-only></base-button>
+                                    <base-button tag="a" href="javascript:void(0)" type="success" icon="fa fa-dribbble" rounded
+                                                 icon-only></base-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-        </div>
-      </div>
+        </section>
+        
+        <br />
+        
+        <section class="section section-lg">
+            <div class="container">
+                <div class="row row-grid justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h2 class="display-3">Available on these technologies
+                            
+                        </h2>
 
-    </base-header>
-
-    <!--Charts-->
-    <div class="container-fluid mt--6">
-      <div class="card-deck flex-column flex-xl-row">
-
-        <card header-classes="bg-transparent">
-          <div slot="header" class="row align-items-center">
-            <div class="col">
-              <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
-              <h5 class="h3 mb-0">전체 매출 현황</h5>
+                        <br />
+                        <br />
+                        
+                        <div class="text-center">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-2 col-4">
+                                    <a href="https://docs.microsoft.com/en-us/dotnet/csharp/" target="_blank" data-toggle="tooltip"
+                                       data-original-title="C# Docs - get started, tutorials, reference. | Microsoft Docs">
+                                        <img v-lazy="'img/brand/csharp.jpg'"
+                                             class="rounded-circle img-fluid">
+                                    </a>
+                                </div>
+                                <div class="col-lg-2 col-4">
+                                    <a href="https://www.embarcadero.com/products/delphi" target="_blank" data-toggle="tooltip"
+                                       data-original-title="Delphi: Software Overview - embarcadero">
+                                        <img v-lazy="'img/brand/delphi.jpg'"
+                                             class="rounded-circle img-fluid opacity-5">
+                                    </a>
+                                </div>
+                                <div class="col-lg-2 col-4">
+                                    <a href="https://getbootstrap.com/" target="_blank" data-toggle="tooltip"
+                                       data-original-title="Bootstrap - The most popular HTML, CSS, and JS library ...">
+                                        <img v-lazy="'img/brand/bootstrap.jpg'"
+                                             class="rounded-circle img-fluid  opacity-5">
+                                    </a>
+                                </div>
+                                <div class="col-lg-2 col-4">
+                                    <a href="https://vuejs.org/" target="_blank" data-toggle="tooltip"
+                                       data-original-title="Vue.js - The progressive javascript framework">
+                                        <img v-lazy="'img/brand/vue.jpg'"
+                                             class="rounded-circle img-fluid">
+                                    </a>
+                                </div>
+                                <div class="col-lg-2 col-4">
+                                    <a href="https://www.oracle.com/database/technologies/" target="_blank" data-toggle="tooltip"
+                                       data-original-title="Database Technologies - Oracle Database">
+                                        <img v-lazy="'img/brand/oracle.jpg'"
+                                             class="rounded-circle img-fluid opacity-5">
+                                    </a>
+                                </div>
+                                <div class="col-lg-2 col-4">
+                                    <a href="https://docs.microsoft.com/ko-kr/sql/sql-server" target="_blank" data-toggle="tooltip"
+                                       data-original-title="SQL Server 기술 설명서 - SQL Server | Microsoft Docs">
+                                        <img v-lazy="'img/brand/mssql.jpg'"
+                                             class="rounded-circle img-fluid opacity-5">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-
-          <div class="d-none d-xl-block">
-            <apex-chart width="85%" align="center" :options="ApexChart.chartOpetions" :series="ApexData.series"></apex-chart>
-          </div>
-          <div class="d-xl-none">
-            <apex-chart width="100%" align="center" :options="ApexChart.chartOpetions2" :series="ApexData.series"></apex-chart>
-          </div>
-        </card>
-
-      </div>
-      <!-- End charts-->
-
-      <!--Tables & Widgets-->
-      <div class="row">
-        <div class="col-xl-12">
-          <checkbox-colored-table :tdata="ApexData.table"></checkbox-colored-table>
-        </div>
-      </div>
-      <!--End Tables & Widgets-->
+        </section>
     </div>
-
-  </div>
 </template>
+
 <script>
-  // Charts
-  import * as chartConfigs from '@/components/argon-core/Charts/config';
+//import { BCarousel } from 'bootstrap-vue/esm/components/carousel/carousel';
+//import { BCarouselSlide } from 'bootstrap-vue/esm/components/carousel/carousel-slide';
 
-  // Components
-  import BaseHeader from '@/components/argon-core/BaseHeader';
-  import BaseProgress from '@/components/argon-core/BaseProgress';
-  import RouteBreadCrumb from '@/components/argon-core/Breadcrumb/RouteBreadcrumb';
-  import StatsCard from '@/components/argon-core/Cards/StatsCard';
-
-  // Table
-  import CheckboxColoredTable from '@/components/tables/RegularTables/SalesTable';
-
-  export default {
+export default {
     layout: 'DashboardLayout',
     components: {
-      BaseHeader,
-      BaseProgress,
-      RouteBreadCrumb,
-      StatsCard,
-      CheckboxColoredTable,
+  //      BCarousel,
+  //      BCarouselSlide
     },
-    data () {
-      return {
-        ApexData: {},
-        ApexChart: {
-          chartOpetions: {
-            chart: {
-              height: 400,
-              type: 'line',
-              stacked: false
-            },
-            dataLabels: {
-              enabled: true,
-              enabledOnSeries: [2],
-              formatter: function(value) {
-                return value.toFixed(2) + '%';
-              }
-            },
-            stroke: {
-              width: [1, 1, 4]
-            },
-            xaxis: {
-              categories: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월']
-            },
-            yaxis: [
-              {
-                seriesName: 'Sales',
-                tickAmount: 8,
-                decimalsInFloat: 0,
-                axisTicks: {
-                  show: true,
-                },
-                axisBorder: {
-                  show: true,
-                  color: '#008FFB'
-                },
-                labels: {
-                  style: {
-                    colors: '#008FFB'
-                  },
-                  formatter: function(value) {
-                    return value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                  }
-                },
-                title: {
-                  text: '목표 매출',
-                  style: {
-                    color: '#008FFB',
-                    fontSize: '12px',
-                  }
-                },
-                tooltip: {
-                  enabled: true
-                }
-              },
-              {
-                seriesName: 'Sales',
-                opposite: true,
-                tickAmount: 8,
-                decimalsInFloat: 0,
-                axisTicks: {
-                  show: true,
-                },
-                axisBorder: {
-                  show: true,
-                  color: '#00E396'
-                },
-                labels: {
-                  style: {
-                    colors: '#00E396',
-                  },
-                  formatter: function(value) {
-                    return value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                  }
-                },
-                title: {
-                  text: '월 매출 현황',
-                  style: {
-                    color: '#00E396',
-                    fontSize: '12px',
-                  }
-                },
-              },
-              {
-                seriesName: 'SalesFlow',
-                opposite: true,
-                tickAmount: 8,
-                axisTicks: {
-                  show: true,
-                },
-                axisBorder: {
-                  show: true,
-                  color: '#FEB019'
-                },
-                labels: {
-                  style: {
-                    colors: '#FEB019',
-                  },
-                  formatter: function(value) {
-                    return value.toFixed(2) + '%';
-                  }
-                },
-                title: {
-                  text: '목표 달성률',
-                  style: {
-                    color: '#FEB019',
-                    fontSize: '12px',
-                  }
-                },
-              },
-            ],
-            tooltip: {
-              fixed: {
-                enabled: false,
-                offsetY: 30,
-                offsetX: 60
-              },
-            },
-            legend: {
-              horizontalAlign: 'left',
-              offsetX: 70
-            }
-          },
-          chartOpetions2: {
-            chart: {
-              height: 350,
-              type: 'line',
-              stacked: false
-            },
-            dataLabels: {
-              enabled: true,
-              enabledOnSeries: [2],
-              formatter: function(value) {
-                return value.toFixed(0) + '%';
-              }
-            },
-            stroke: {
-              width: [1, 1, 4]
-            },
-            xaxis: {
-              categories: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월']
-            },
-            yaxis: [
-              {
-                show: false,
-                tickAmount: 8,
-                decimalsInFloat: 0,
-                axisTicks: {
-                  show: true,
-                },
-                axisBorder: {
-                  show: true,
-                  color: '#008FFB'
-                },
-                labels: {
-                  style: {
-                    colors: '#008FFB'
-                  },
-                  formatter: function(value) {
-                    return value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                  }
-                },
-                title: {
-                  text: '목표 매출',
-                  style: {
-                    color: '#008FFB',
-                    fontSize: '12px',
-                  }
-                },
-                tooltip: {
-                  enabled: true
-                }
-              },
-              {
-                show: false,
-                seriesName: 'Sales',
-                opposite: true,
-                tickAmount: 8,
-                decimalsInFloat: 0,
-                axisTicks: {
-                  show: true,
-                },
-                axisBorder: {
-                  show: true,
-                  color: '#00E396'
-                },
-                labels: {
-                  style: {
-                    colors: '#00E396',
-                  },
-                  formatter: function(value) {
-                    return value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                  }
-                },
-                title: {
-                  text: '월 매출 현황',
-                  style: {
-                    color: '#00E396',
-                    fontSize: '12px',
-                  }
-                },
-              },
-              {
-                show: false,
-                seriesName: 'SalesFlow',
-                opposite: true,
-                tickAmount: 8,
-                axisTicks: {
-                  show: true,
-                },
-                axisBorder: {
-                  show: true,
-                  color: '#FEB019'
-                },
-                labels: {
-                  style: {
-                    colors: '#FEB019',
-                  },
-                  formatter: function(value) {
-                    return value.toFixed(2) + '%';
-                  }
-                },
-                title: {
-                  text: '목표 달성률',
-                  style: {
-                    color: '#FEB019',
-                    fontSize: '12px',
-                  }
-                },
-              },
-            ],
-            tooltip: {
-              fixed: {
-                enabled: false,
-                offsetY: 30,
-                offsetX: 60
-              },
-            },
-            legend: {
-              horizontalAlign: 'left',
-              offsetX: 70
-            }
-          },
-        }
-      }
+    mounted () {
+        
     },
-    methods : {
-      async getApexData() {
-        try {
-          const response = await this.$axios.get('/dashmenu/totsales');
-          return response.data;
-        } catch (error) {
-          console.log(error);
-        }
-      }
-    },
-    async created () {
-      this.ApexData = await this.getApexData();
-      this.$store.commit('SET_TITLE', '전체매출');
-    },
-    filters: {
-      currency: function (value) {
-        parseFloat(value)
-        var num = new Number(value)
-        return num.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-      },
-      fixed: function (value) {
-        var num = new Number(value)
-        return parseFloat(num.toFixed(2))
-      },
+    created(){
+        this.$store.commit('SET_TITLE', 'MAIN');
     }
-  };
+};
 </script>
-<style></style>
+

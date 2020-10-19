@@ -214,6 +214,9 @@ export default {
     },
     mounted () {
         
+    },
+    created(){
+        this.$store.commit('SET_TITLE', 'MAIN');
     }
 };
 </script>

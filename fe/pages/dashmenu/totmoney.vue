@@ -80,7 +80,19 @@
           <div slot="header" class="row align-items-center">
             <div class="col">
               <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
-              <h5 class="h3 mb-0">전체 수금 현황</h5>
+              <h5 class="h3 mb-0">수금현황</h5>
+            </div>
+            <div class="row mr-3" >
+              <base-input label="">
+                <el-select v-model="selects.type" filterable
+                            placeholder="Type select" @change="updateDropdowns">
+                  <el-option v-for="option in selectOptions"
+                              :key="option.label"
+                              :label="option.label"
+                              :value="option.value">
+                  </el-option>
+                </el-select>
+              </base-input>
             </div>
           </div>
 
@@ -119,6 +131,9 @@
   // Table
   import CheckboxColoredTable from '@/components/tables/RegularTables/SalesTable';
 
+  // select
+  import { Select, Option } from 'element-ui'
+
   export default {
     layout: 'DashboardLayout',
     components: {
@@ -127,10 +142,33 @@
       RouteBreadCrumb,
       StatsCard,
       CheckboxColoredTable,
+      [Select.name]: Select,
+      [Option.name]: Option,
     },
 
     data () {
       return {
+        selectOptions: [
+          {
+            label: '전체',
+            value: '1'
+          },
+          {
+            label: 'MSC',
+            value: '2'
+          },
+          {
+            label: '수탁',
+            value: '3'
+          },
+          {
+            label: '수출',
+            value: '4'
+          },
+        ],
+        selects: {
+          type: '1',
+        },
         ApexData: {},
         ApexChart: {
           chartOpetions: {
@@ -376,17 +414,35 @@
       }
     },
     methods : {
-      async getApexData() {
+      async updateDropdowns(index) {
+        if(index == '1'){
+          this.$store.commit('SET_TITLE', '전체수금');
+          this.ApexData =await this.getApexData('totmoney');
+        }
+        else if(index == '2'){
+          this.$store.commit('SET_TITLE', 'MSC수금');
+          this.ApexData =await this.getApexData('totmoney');
+        }
+        else if(index == '3'){
+          this.$store.commit('SET_TITLE', '수탁수금');
+          this.ApexData =await this.getApexData('totmoney');
+        }
+        else if(index == '4'){
+          this.$store.commit('SET_TITLE', '수출수금');
+          this.ApexData =await this.getApexData('totmoney');
+        }
+      },
+      async getApexData(type) {
         try {
-          const response = await this.$axios.get('/dashmenu/totmoney');
+          var response = await this.$axios.get('/dashmenu/' + type);
           return response.data;
         } catch (error) {
           console.log(error);
         }
-      }
+      },
     },
     async created () {
-      this.ApexData = await this.getApexData();
+      this.ApexData = await this.getApexData('totmoney');
       this.$store.commit('SET_TITLE', '전체수금');
     },
     filters: {
