@@ -33,7 +33,7 @@
         <a v-if="this.$auth.loggedIn" href="#" class="nav-link pr-0" @click.prevent slot="title-container">
           <div class="media align-items-center">
                   <span class="avatar avatar-sm rounded-circle">
-                    <img v-if="user.emp_cd === 'admin'" alt="Image placeholder" src="/img/theme/jbs.jpg">
+                    <img v-if="user.emp_cd === 'admin'" alt="Image placeholder" src="/img/theme/setter.jpg">
                     <img v-else alt="Image placeholder" src="/img/theme/profile.jpg">
                   </span>
             <div class="media-body ml-2 d-none d-lg-block">
