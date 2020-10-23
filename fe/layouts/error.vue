@@ -30,9 +30,9 @@
           </div>
           <div class="col-md-6">
             <div class="pr-md-5">
-              <h1 class="text-light">Dashboard pages</h1>
-              <p class="text-light">If you want to go dashboard pages, You can get started by clicking on the link below..</p>
-              <nuxt-link to="/dashmenu/totsales" class="font-weight-bold text-warning mt-5">Dashboard pages</nuxt-link>
+              <h1 class="text-light">Main pages</h1>
+              <p class="text-light">If you want to go Main pages, You can get started by clicking on the link below..</p>
+              <nuxt-link to="/" class="font-weight-bold text-warning mt-5">Main pages</nuxt-link>
             </div>
           </div>
         </div>

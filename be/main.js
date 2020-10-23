@@ -38,6 +38,15 @@ sql.connect(config).then(pool => {
     var getuserlist = require('./api/getuserlist');
     var profile     = require('./api/profile');
 
+    // Attrition API 로드
+    var attrition_d1 = require('./api/attrition_d1');
+    var attrition_s1 = require('./api/attrition_s1');
+    var attrition_b1 = require('./api/attrition_b1');
+    var attrition_b2 = require('./api/attrition_b2');
+    var attrition_p1 = require('./api/attrition_p1');
+    var attrition_p2 = require('./api/attrition_p2');
+    var attrition_v1 = require('./api/attrition_v1');
+
 
     apiRouter.get('/a_authuser/:id', a_authuser.data);
     apiRouter.post('/a_delauth', a_delauth.data);
@@ -52,6 +61,15 @@ sql.connect(config).then(pool => {
     apiRouter.get('/getMenutree', getmenutree.data);
     apiRouter.get('/getuserlist', getuserlist.data);
     apiRouter.get('/members/profile', profile.data);
+
+    // Atrrition Router 연결
+    apiRouter.get('/attrition_d1', attrition_d1.data);
+    apiRouter.get('/attrition_s1', attrition_s1.data);
+    apiRouter.get('/attrition_b1', attrition_b1.data);
+    apiRouter.get('/attrition_b2', attrition_b2.data);
+    apiRouter.get('/attrition_p1', attrition_p1.data);
+    apiRouter.get('/attrition_p2', attrition_p2.data);
+    apiRouter.get('/attrition_v1', attrition_v1.data);
 });
 //var router = require('./routes')(app);
 
