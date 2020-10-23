@@ -5,7 +5,6 @@ exports.data = function(req, res) {
         const jwt = require('jsonwebtoken');
         const secret = 'yooyoung';
         
-        console.log('GET Profile API Start~');
         try {
             var id = jwt.verify(token, secret);
 

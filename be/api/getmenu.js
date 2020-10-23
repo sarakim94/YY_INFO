@@ -13,8 +13,6 @@ exports.data = function(req, res) {
         else{
             query = 'SELECT A.NAME AS NAME, A.PATH AS PATH FROM DASH_MENU A LEFT JOIN DASH_MENU_AUTH B ON A.ID = B.PGID WHERE A.P_ID = @PGID AND B.EMP_CD = @EMP_CD';
         }
-        
-        console.log('GET MENU API Start~');
 
         return global.pool.request()
         .query('SELECT ID,NAME,ICON FROM DASH_MENU WHERE LV = 0 ORDER BY ID')
@@ -53,8 +51,6 @@ exports.data = function(req, res) {
                     menuData.push(menu);
                 })
             }
-            
-            console.log(menuData);
 
             res.json(menuData);
             res.end();     
