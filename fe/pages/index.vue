@@ -25,10 +25,10 @@
                                             controls
                                             indicators>
                                     <!-- Text slides with image -->
-                                    <b-carousel-slide img-src="img/about/sfa.jpg"></b-carousel-slide>
+                                    <b-carousel-slide img-src="img/about/yyinfo.jpg"></b-carousel-slide>
                                     <b-carousel-slide img-src="img/about/erp.jpg"></b-carousel-slide>
                                     <b-carousel-slide img-src="img/about/sfa.jpg"></b-carousel-slide>
-                                    <b-carousel-slide img-src="img/about/erp.jpg"></b-carousel-slide>
+                                    <b-carousel-slide img-src="img/about/tpms.jpg"></b-carousel-slide>
                                 </b-carousel>
                             </div>
                         </div>

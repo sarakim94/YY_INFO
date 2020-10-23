@@ -20,7 +20,6 @@ exports.data = function(req, res) {
             query = query + 'LEFT JOIN CM003M01 C ON B.DEPT_CD = C.DEPT_CD ';
             query = query + 'WHERE A.ID = @ID ';
 
-            
             return global.pool.request()
             .input('ID',id)
             .query(query)
