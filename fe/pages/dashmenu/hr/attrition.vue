@@ -209,6 +209,9 @@
               type: 'donut',
             },
             labels: ['사무', '연구', 'MSC', '생산'],
+            fill: {
+              type: 'gradient',
+            },
           },
           series:[44, 55, 13, 43],
         },
@@ -217,6 +220,19 @@
           chartOptions:{
             chart: {
               type: 'scatter',
+            },
+            fill: {
+              type: 'gradient',
+              gradient: {
+                  shade: 'light',
+                  type: "horizontal",
+                  shadeIntensity: 0.25,
+                  gradientToColors: undefined,
+                  inverseColors: true,
+                  opacityFrom: 0.85,
+                  opacityTo: 0.85,
+                  stops: [50, 0, 100]
+              },
             },
             colors: ['#48C278', '#FF4646'],
             xaxis: {
@@ -239,6 +255,19 @@
           chartOptions:{
             chart: {
               type: 'bar',
+            },
+            fill: {
+              type: 'gradient',
+              gradient: {
+                  shade: 'light',
+                  type: "horizontal",
+                  shadeIntensity: 0.25,
+                  gradientToColors: undefined,
+                  inverseColors: true,
+                  opacityFrom: 0.85,
+                  opacityTo: 0.85,
+                  stops: [50, 0, 100]
+              },
             },
             plotOptions: {
               bar: {
@@ -308,6 +337,19 @@
             chart: {
               type: 'bar',
             },
+            fill: {
+              type: 'gradient',
+              gradient: {
+                  shade: 'light',
+                  type: "horizontal",
+                  shadeIntensity: 0.25,
+                  gradientToColors: undefined,
+                  inverseColors: true,
+                  opacityFrom: 0.85,
+                  opacityTo: 0.85,
+                  stops: [50, 0, 100]
+              },
+            },
             plotOptions: {
               bar: {
                 horizontal: false,
@@ -337,6 +379,9 @@
               type: 'pie',
             },
             colors: ['#5C90FE', '#FE5C5C'],
+            fill: {
+              type: 'gradient',
+            },
             labels: ['남자', '여자'],
             legend: {
               show : true,
@@ -353,6 +398,9 @@
               type: 'pie',
             },
             colors: ['#5C90FE', '#FE5C5C'],
+            fill: {
+              type: 'gradient',
+            },
             labels: ['남자', '여자'],
             legend: {
               show : true,
