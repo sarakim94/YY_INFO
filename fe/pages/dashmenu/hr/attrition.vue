@@ -57,7 +57,7 @@
               <!-- Subtitle -->
               <h6 class="surtitle">입사추이현황</h6>
               <!-- Title -->
-              <h5 class="h3 mb-0">나이/연봉 별 입퇴사 현황(최근 5년)</h5>
+              <h5 class="h3 mb-0">나이/연봉 별 입퇴사 현황(최근 1년)</h5>
             </template>
             <div>
               <apex-chart align="center" :options="ApexScatterChart.chartOptions" :series="ApexScatterChart.series"></apex-chart>
@@ -75,7 +75,7 @@
                     <!-- Subtitle -->
                     <h6 class="surtitle">입사현황</h6>
                     <!-- Title -->
-                    <h5 class="h3 mb-0">성별 입사자 현황({{year}}년 기준)</h5>
+                    <h5 class="h3 mb-0">성별 입사자 현황({{year}}년)</h5>
                   </template>
                   <div>
                     <apex-chart align="center" :options="ApexPieChart.chartOptions" :series="ApexPieChart.series"></apex-chart>
@@ -88,7 +88,7 @@
                     <!-- Subtitle -->
                     <h6 class="surtitle">퇴사현황</h6>
                     <!-- Title -->
-                    <h5 class="h3 mb-0">성별 퇴사자 현황({{year}}년 기준)</h5>
+                    <h5 class="h3 mb-0">성별 퇴사자 현황({{year}}년)</h5>
                   </template>
                   <div>
                     <apex-chart align="center" :options="ApexPieChart2.chartOptions" :series="ApexPieChart2.series"></apex-chart>
@@ -119,7 +119,7 @@
               <!-- Subtitle -->
               <h6 class="surtitle">입사추이현황</h6>
               <!-- Title -->
-              <h5 class="h3 mb-0">부서 별 입/퇴사자 현황({{year}}년 기준)</h5>
+              <h5 class="h3 mb-0">부서 별 입/퇴사자 현황({{year}}년)</h5>
             </template>
             <div class="chart-area">
               <apex-chart align="center" :options="ApexBarChart2.chartOptions" :series="ApexBarChart2.series"></apex-chart>

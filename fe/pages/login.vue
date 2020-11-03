@@ -83,7 +83,7 @@ import swal from 'sweetalert2';
           password: '',
           rememberMe: true
         }
-      };
+      }
     },
     methods: {
       onSubmit() {
@@ -110,7 +110,22 @@ import swal from 'sweetalert2';
           this.model.email = ''
           this.model.password = ''
         })
+      },
+    },
+    mounted(){
+      if(process.client){
+        var browse = navigator.userAgent.toLowerCase(); 
+        
+        if( (navigator.appName == 'Netscape' && browse.indexOf('trident') != -1) || (browse.indexOf("msie") != -1)) {
+            swal.fire({
+            title: `Warning`,
+            text: '익스플로러 브라우저는 지원하지 않습니다.',
+            buttonsStyling: false,
+            confirmButtonClass: 'btn btn-warning',
+            type: 'warning'
+            })  
+        }
       }
-    }
+    },
   };
 </script>

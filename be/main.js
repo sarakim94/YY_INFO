@@ -46,6 +46,12 @@ sql.connect(config).then(pool => {
     var attrition_p1 = require('./api/attrition_p1');
     var attrition_p2 = require('./api/attrition_p2');
     var attrition_v1 = require('./api/attrition_v1');
+    var indicators_l1 = require('./api/indicators_l1');
+    var indicators_b1 = require('./api/indicators_b1');
+    var indicators_b2 = require('./api/indicators_b2');
+    var indicators_m1 = require('./api/indicators_m1');
+    var indicators_b3 = require('./api/indicators_b3');
+    var indicators_m2 = require('./api/indicators_m2');
 
 
     apiRouter.get('/a_authuser/:id', a_authuser.data);
@@ -70,6 +76,13 @@ sql.connect(config).then(pool => {
     apiRouter.get('/attrition_p1', attrition_p1.data);
     apiRouter.get('/attrition_p2', attrition_p2.data);
     apiRouter.get('/attrition_v1', attrition_v1.data);
+    apiRouter.post('/indicators_l1', indicators_l1.data);
+    apiRouter.post('/indicators_b1', indicators_b1.data);
+    apiRouter.post('/indicators_b2', indicators_b2.data);
+    apiRouter.post('/indicators_m1', indicators_m1.data);
+    apiRouter.post('/indicators_b3', indicators_b3.data);
+    apiRouter.post('/indicators_m2', indicators_m2.data);
+
 });
 //var router = require('./routes')(app);
 
