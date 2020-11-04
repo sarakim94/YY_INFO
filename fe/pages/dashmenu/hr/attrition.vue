@@ -445,7 +445,7 @@
               type: 'gradient',
             },
             xaxis: {
-              categories: [2015, 2016, 2017, 2018, 2019, 2020],
+              categories: [],
             },
             yaxis: [
               {
@@ -568,7 +568,10 @@
 
       this.CardData = await this.getCardData();
 
-      this.ApexMixChart.series = await this.getMixData();
+      var mix_data = await this.getMixData();
+      this.ApexMixChart.series = mix_data.series;
+      console.log(mix_data.chartOptions);
+      this.ApexMixChart.chartOptions = mix_data.chartOptions;
     },
   };
 </script>
