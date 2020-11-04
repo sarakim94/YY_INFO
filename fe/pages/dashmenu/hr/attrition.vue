@@ -357,7 +357,10 @@
           chartOptions:{
             colors: ['#48C278', '#FF4646'],
             chart: {
-              type: 'bar',
+              type: 'line',
+            },
+            stroke: {
+              width: [2, 2]
             },
             fill: {
               type: 'gradient',
