@@ -4,6 +4,7 @@
     </base-header>
     <div class="container-fluid mt--5">
       <div class="row mb-3">
+        
         <div class="col-xl-4 col-md-12">
           <div class="h-100 d-flex flex-column">
             <div class="row">
@@ -34,14 +35,48 @@
                 </stats-card>
               </div>
             </div>
+            <div class="row justify-content-center flex-grow-1">
+              <div class="col-xl-12">
+                <card class = "card h-100">
+                  <template slot="header">
+                    <!-- Subtitle -->
+                    <h6 class="surtitle">인원현황</h6>
+                    <!-- Title -->
+                    <h5 class="h3 mb-0">직군별 인원</h5>
+                  </template>
+                  <div >
+                    <apex-chart align="center" :options="ApexDonutChart.chartOptions" :series="ApexDonutChart.series"></apex-chart>
+                  </div>
+                </card>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-8 col-md-12">
+          <card class="card h-100">
+            <template slot="header">
+              <!-- Subtitle -->
+              <h6 class="surtitle">입사추이현황</h6>
+              <!-- Title -->
+              <h5 class="h3 mb-0">나이/연봉 별 입퇴사 현황(최근 1년)</h5>
+            </template>
+            <div>
+              <apex-chart align="center" :options="ApexScatterChart.chartOptions" :series="ApexScatterChart.series"></apex-chart>
+            </div>
+          </card>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-4 col-md-12">
+          <div class="h-100 d-flex flex-column">
             <div class="row">
               <div class="col-xl-6 col-md-6">
                 <card >
                   <template slot="header">
                     <!-- Subtitle -->
-                    <h6 class="surtitle">성별 입사현황</h6>
+                    <h6 class="surtitle">입사현황</h6>
                     <!-- Title -->
-                    <h5 class="h3 mb-0">입사자 현황({{year}}년)</h5>
+                    <h5 class="h3 mb-0">성별 입사자 현황({{year}}년)</h5>
                   </template>
                   <div>
                     <apex-chart align="center" :options="ApexPieChart.chartOptions" :series="ApexPieChart.series"></apex-chart>
@@ -52,9 +87,9 @@
                 <card >
                   <template slot="header">
                     <!-- Subtitle -->
-                    <h6 class="surtitle">성별 퇴사현황</h6>
+                    <h6 class="surtitle">퇴사현황</h6>
                     <!-- Title -->
-                    <h5 class="h3 mb-0">퇴사자 현황({{year}}년)</h5>
+                    <h5 class="h3 mb-0">성별 퇴사자 현황({{year}}년)</h5>
                   </template>
                   <div>
                     <apex-chart align="center" :options="ApexPieChart2.chartOptions" :series="ApexPieChart2.series"></apex-chart>
@@ -77,78 +112,22 @@
                 </card>
               </div>
             </div>
-
           </div>
         </div>
-        <div class="col-xl-4 col-md-12">
-          <div class="h-100 d-flex flex-column">
-            <div class="row">
-              <div class="col-xl-12">
-                <card >
-                  <template slot="header">
-                    <!-- Subtitle -->
-                    <h6 class="surtitle">인원현황</h6>
-                    <!-- Title -->
-                    <h5 class="h3 mb-0">직군별 인원</h5>
-                  </template>
-                  <div >
-                    <apex-chart align="center" :options="ApexDonutChart.chartOptions" :series="ApexDonutChart.series"></apex-chart>
-                  </div>
-                </card>
-              </div>
+        <div class="col-xl-8 col-md-12">
+          <card class="card h-100">
+            <template slot="header">
+              <!-- Subtitle -->
+              <h6 class="surtitle">입사추이현황</h6>
+              <!-- Title -->
+              <h5 class="h3 mb-0">부서 별 입/퇴사자 현황({{year}}년)</h5>
+            </template>
+            <div class="chart-area">
+              <apex-chart align="center" :options="ApexBarChart2.chartOptions" :series="ApexBarChart2.series"></apex-chart>
             </div>
-            <div class="row justify-content-center flex-grow-1">
-              <div class="col-xl-12">
-                <card class="card h-100">
-                  <template slot="header">
-                    <!-- Subtitle -->
-                    <h6 class="surtitle">인원현황</h6>
-                    <!-- Title -->
-                    <h5 class="h3 mb-0">연도별 입사자 추이</h5>
-                  </template>
-                  <div >
-                    <apex-chart align="center" :options="ApexMixChart.chartOptions" :series="ApexMixChart.series"></apex-chart>
-                  </div>
-                </card>
-              </div>
-            </div>
-          </div>
+          </card>
         </div>
-        <div class="col-xl-4 col-md-12">
-          <div class="h-100 d-flex flex-column">
-            <div class="row">
-              <div class="col-xl-12 col-md-12">
-                <card >
-                  <template slot="header">
-                    <!-- Subtitle -->
-                    <h6 class="surtitle">입사추이현황</h6>
-                    <!-- Title -->
-                    <h5 class="h3 mb-0">부서 별 입/퇴사자 현황({{year}}년)</h5>
-                  </template>
-                  <div class="chart-area">
-                    <apex-chart align="center" :options="ApexBarChart2.chartOptions" :series="ApexBarChart2.series"></apex-chart>
-                  </div>
-                </card>
-              </div>
-            </div>
-            <div class="row justify-content-center flex-grow-1">
-              <div class="col-xl-12 col-md-12">
-                <card class="card h-100">
-                  <template slot="header">
-                    <!-- Subtitle -->
-                    <h6 class="surtitle">입사추이현황</h6>
-                    <!-- Title -->
-                    <h5 class="h3 mb-0">나이/연봉 별 입퇴사 현황(최근 1년)</h5>
-                  </template>
-                  <div>
-                    <apex-chart align="center" :options="ApexScatterChart.chartOptions" :series="ApexScatterChart.series"></apex-chart>
-                  </div>
-                </card>
-              </div>
-            </div>  
-          </div>
-        </div>
-      </div>
+     </div>
     </div>
   </div>
 </template>
@@ -235,7 +214,7 @@
               type: 'gradient',
             },
           },
-          series:[],
+          series:[44, 55, 13, 43],
         },
 
         ApexScatterChart: {
@@ -410,7 +389,7 @@
               position: 'bottom',
             },
           },
-          series : []
+          series : [34, 76]
           ,
         },
 
@@ -429,55 +408,9 @@
               position: 'bottom',
             },
           },
-          series : []
+          series : [34, 76]
           ,
-        },
-        ApexMixChart: {
-          chartOptions : {
-            chart : {
-              type: 'line',
-            },
-            colors: ['#5C90FE', '#FE5C5C','#00FF00'],
-            stroke: {
-              width: [1, 1, 4]
-            },
-            fill: {
-              type: 'gradient',
-            },
-            xaxis: {
-              categories: [2015, 2016, 2017, 2018, 2019, 2020],
-            },
-            yaxis: [
-              {
-                max : 200,
-                tickAmount: 5,
-                axisTicks: {
-                  show: true,
-                },
-              },
-              {
-                max : 200,
-                tickAmount: 5,
-                opposite: true,
-                axisTicks: {
-                  show: false,
-                },
-              },
-              {
-                tickAmount: 5,
-                opposite: true,
-                axisTicks: {
-                  show: true,
-                },
-              },
-            ],
-            legend: {
-              show : true,
-              position: 'bottom',
-            },
-          },
-          series: [],
-        },
+        }
       };
     },
     methods : {
@@ -537,14 +470,6 @@
           console.log(error);
         }
       },
-      async getMixData() {
-        try {
-          var response = await this.$axios.get('/attrition_m1');
-          return response.data;
-        } catch (error) {
-          console.log(error);
-        }
-      },
     },
     filters: {
       fixed: function (value) {
@@ -567,8 +492,6 @@
       this.ApexPieChart2.series = await this.getPieData2();
 
       this.CardData = await this.getCardData();
-
-      this.ApexMixChart.series = await this.getMixData();
     },
   };
 </script>
