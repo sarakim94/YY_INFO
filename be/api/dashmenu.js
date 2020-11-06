@@ -83,7 +83,7 @@ exports.data = function(req, res) {
 
                 salesData.table = tableData;
 
-                console.log(salesData);
+//                console.log(salesData);
                 res.json(salesData);
                 res.end();
             });    

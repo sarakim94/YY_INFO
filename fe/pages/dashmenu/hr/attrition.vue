@@ -119,12 +119,25 @@
             <div class="row">
               <div class="col-xl-12 col-md-12">
                 <card >
-                  <template slot="header">
-                    <!-- Subtitle -->
-                    <h6 class="surtitle">입사추이현황</h6>
-                    <!-- Title -->
-                    <h5 class="h3 mb-0">부서 별 입/퇴사자 현황({{year}}년)</h5>
-                  </template>
+                  <div slot="header" class="row align-items-center">
+                    <div class="col">
+                      <h6 class="text-uppercase text-muted ls-1 mb-1">입사추이현황</h6>
+                      <h5 class="h3 mb-0">부서 별 입/퇴사자 현황({{year}}년)</h5>
+                    </div>
+
+                    <div class="row mr-3" >
+                      <base-input label="">
+                        <el-select v-model="selects.type" filterable
+                                    placeholder="Type select" @change="updateDropdowns">
+                          <el-option v-for="option in selectOptions"
+                                      :key="option.label"
+                                      :label="option.label"
+                                      :value="option.value">
+                          </el-option>
+                        </el-select>
+                      </base-input>
+                    </div>
+                  </div>
                   <div class="chart-area">
                     <apex-chart align="center" :options="ApexBarChart2.chartOptions" :series="ApexBarChart2.series"></apex-chart>
                   </div>
@@ -160,6 +173,9 @@
   import StatsCard from '~/components/argon-core/Cards/StatsCard';
   import { Charts } from "~/components/argon-core/Charts/config";
 
+//SELECT 사용을 위한 컴포넌트
+  import { Select, Option } from 'element-ui'
+
   function randomScalingFactor() {
     return Math.round(Math.random() * 100);
   }
@@ -169,11 +185,34 @@
     components: {
       StatsCard,
       BaseHeader,
-      RouteBreadCrumb
+      RouteBreadCrumb,
+      [Select.name]: Select,
+      [Option.name]: Option,
     },
     data() {
       return {
         year: new Date().getFullYear(),
+        selectOptions: [
+          {
+            label: 'MOS',
+            value: '1'
+          },
+          {
+            label: '연구',
+            value: '2'
+          },
+          {
+            label: 'MSC',
+            value: '3'
+          },
+          {
+            label: 'PME',
+            value: '4'
+          },
+        ],
+        selects: {
+          type: '1',
+        },
         CardData : {
         },
         ApexDonutChart: {
@@ -230,7 +269,7 @@
             chart: {
               type: 'donut',
             },
-            labels: ['사무', '연구', 'MSC', '생산'],
+            labels: ['MOS', '연구', 'MSC', 'PME'],
             fill: {
               type: 'gradient',
             },
@@ -484,6 +523,28 @@
       };
     },
     methods : {
+      async updateDropdowns(index) {
+        if(index == '1'){
+          var data = await this.getBarData2('MOS');
+          this.ApexBarChart2.series = data.series;
+          this.ApexBarChart2.chartOptions = data.chartOptions;
+        }
+        else if(index == '2'){
+          var data = await this.getBarData2('DEV');
+          this.ApexBarChart2.series = data.series;
+          this.ApexBarChart2.chartOptions = data.chartOptions;
+        }
+        else if(index == '3'){
+          var data = await this.getBarData2('MSC');
+          this.ApexBarChart2.series = data.series;
+          this.ApexBarChart2.chartOptions = data.chartOptions;
+        }
+        else if(index == '4'){
+          var data = await this.getBarData2('PME');
+          this.ApexBarChart2.series = data.series;
+          this.ApexBarChart2.chartOptions = data.chartOptions;
+        }
+      },
       async getDonutData() {
         try {
           var response = await this.$axios.get('/attrition_d1');
@@ -508,10 +569,13 @@
           console.log(error);
         }
       },
-      async getBarData2() {
+      async getBarData2(type) {
         try {
-          var response = await this.$axios.get('/attrition_b2');
-          return response.data;
+            var response = await this.$axios.post('/attrition_b2',{
+                type: type
+            });
+          
+            return response.data;
         } catch (error) {
           console.log(error);
         }
@@ -562,7 +626,7 @@
       this.ApexScatterChart.series = await this.getScatterData();
       this.ApexBarChart.series = await this.getBarData();
       
-      var data = await this.getBarData2();
+      var data = await this.getBarData2('MOS');
       this.ApexBarChart2.series = data.series;
       this.ApexBarChart2.chartOptions = data.chartOptions;
       

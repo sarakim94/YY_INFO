@@ -1,4 +1,5 @@
 exports.data = function(req, res) {
+    var type = req.body.type;
     var categories = new Array();
     var in_data = new Array();
     var out_data = new Array();
@@ -9,7 +10,7 @@ exports.data = function(req, res) {
     var chart = new Object();
         
     return global.pool.request()
-    .input('TYPE', 'B2')
+    .input('TYPE', 'B2_' + type)
     .execute('DASH_ATTRITION')
     .then(result => {
         var len = result.recordset.length;
@@ -21,6 +22,12 @@ exports.data = function(req, res) {
 
         chart.chartOptions.chart = new Object();
         chart.chartOptions.chart.type = 'bar';
+        
+        chart.chartOptions.stroke = new Object();
+        chart.chartOptions.stroke.width = new Array();
+        chart.chartOptions.stroke.width.push(1);
+        chart.chartOptions.stroke.width.push(1);
+        chart.chartOptions.stroke.width.push(4);
 
         chart.chartOptions.plotOptions = new Object();
         chart.chartOptions.plotOptions.bar = new Object();

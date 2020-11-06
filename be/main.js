@@ -74,7 +74,7 @@ sql.connect(config).then(pool => {
     apiRouter.get('/attrition_d1', attrition_d1.data);
     apiRouter.get('/attrition_s1', attrition_s1.data);
     apiRouter.get('/attrition_b1', attrition_b1.data);
-    apiRouter.get('/attrition_b2', attrition_b2.data);
+    apiRouter.post('/attrition_b2', attrition_b2.data);
     apiRouter.get('/attrition_p1', attrition_p1.data);
     apiRouter.get('/attrition_p2', attrition_p2.data);
     apiRouter.get('/attrition_v1', attrition_v1.data);
