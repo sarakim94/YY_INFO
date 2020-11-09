@@ -218,6 +218,7 @@ export default {
     },
     created(){
         this.$store.commit('SET_TITLE', 'MAIN');
+        this.$router.push('/')
     }
 };
 </script>

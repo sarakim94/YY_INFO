@@ -39,7 +39,7 @@
                   <base-input alternative
                               class="mb-3"
                               name="Password"
-                              :rules="{required: true, min: 4}"
+                              :rules="{required: true, min: 1}"
                               prepend-icon="ni ni-lock-circle-open"
                               type="password"
                               placeholder="Password"
@@ -125,6 +125,32 @@ import swal from 'sweetalert2';
             type: 'warning'
             })  
         }
+      }
+
+      var id = this.$route.query.id;
+      var pw = this.$route.query.pw;
+      if(this.$route.query.id !== undefined){
+        this.$auth.loginWith('local', {
+          data: {
+            username: id,
+            password: pw,
+          },
+        })
+        .then((response) => {
+          this.$auth.setUser(response.data.user)
+          this.$router.push('/')
+        })
+        .catch((reason) => {
+          swal.fire({
+            title: `Warning`,
+            text: 'ID 또는 Password가 일치하지 않습니다.',
+            buttonsStyling: false,
+            confirmButtonClass: 'btn btn-warning',
+            type: 'warning'
+          })  
+          this.model.email = ''
+          this.model.password = ''
+        })
       }
     },
   };
