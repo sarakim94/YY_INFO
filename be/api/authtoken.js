@@ -55,6 +55,7 @@ exports.data = async function(req, res) {
         .query('SELECT * FROM DASH_TOKEN WHERE TOKEN = @TOKEN')
         .then(async result => {
             if(result.recordset.length === 0){
+                console.log(data.key);
                 await global.pool.request()
                 .input('TOKEN', data.key)
                 .input('ID', id)

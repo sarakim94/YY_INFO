@@ -24,6 +24,7 @@ app.use('/api', apiRouter);
 
 sql.connect(config).then(pool => {
     global.pool = pool;
+    var logout      = require('./api/logout');
     var a_authuser  = require('./api/a_authuser');
     var a_delauth   = require('./api/a_delauth');
     var a_delmenu   = require('./api/a_delmenu');
@@ -57,6 +58,7 @@ sql.connect(config).then(pool => {
 
 
     // Router 연결
+    apiRouter.post('/api/auth/logout', logout.data);
     apiRouter.get('/a_authuser/:id', a_authuser.data);
     apiRouter.post('/a_delauth', a_delauth.data);
     apiRouter.post('/a_delmenu', a_delmenu.data);

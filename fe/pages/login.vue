@@ -95,7 +95,6 @@ import swal from 'sweetalert2';
         })
         .then((response) => {
           console.log('then')
-          console.log(response)
           this.$auth.setUser(response.data.user)
           this.$router.push('/')
         })
@@ -112,44 +111,40 @@ import swal from 'sweetalert2';
         })
       },
     },
-    mounted(){
-      if(process.client){
-        var browse = navigator.userAgent.toLowerCase(); 
-        
-        if( (navigator.appName == 'Netscape' && browse.indexOf('trident') != -1) || (browse.indexOf("msie") != -1)) {
-            swal.fire({
-            title: `Warning`,
-            text: '익스플로러 브라우저는 지원하지 않습니다.',
-            buttonsStyling: false,
-            confirmButtonClass: 'btn btn-warning',
-            type: 'warning'
-            })  
-        }
-      }
-
-      var id = this.$route.query.id;
-      var pw = this.$route.query.pw;
+    async mounted(){  
+      var id = this.$route.query.id
+      var pw = this.$route.query.pw
       if(this.$route.query.id !== undefined){
-        this.$auth.loginWith('local', {
-          data: {
-            username: id,
-            password: pw,
-          },
-        })
-        .then((response) => {
-          this.$auth.setUser(response.data.user)
-          this.$router.push('/')
+
+        await this.$auth.logout('local')
+        .then(() => {
+          this.$auth.loginWith('local', {
+            data: {
+              username: id,
+              password: pw,
+            },
+          })
+          .then((response) => {
+            this.$auth.setUser(response.data.user)
+            this.$route.query.id = undefined
+            this.$route.query.pw = undefined
+            this.$router.push('/')
+          })
+          .catch((reason) => {
+            swal.fire({
+              title: `Warning`,
+              text: 'ID 또는 Password가 일치하지 않습니다.',
+              buttonsStyling: false,
+              confirmButtonClass: 'btn btn-warning',
+              type: 'warning'
+            })  
+            this.model.email = ''
+            this.model.password = ''
+          })
         })
         .catch((reason) => {
-          swal.fire({
-            title: `Warning`,
-            text: 'ID 또는 Password가 일치하지 않습니다.',
-            buttonsStyling: false,
-            confirmButtonClass: 'btn btn-warning',
-            type: 'warning'
-          })  
-          this.model.email = ''
-          this.model.password = ''
+          console.log('catch')
+          console.log(reason)
         })
       }
     },
