@@ -39,6 +39,16 @@ sql.connect(config).then(pool => {
     var getuserlist = require('./api/getuserlist');
     var profile     = require('./api/profile');
 
+    // SELECT CODE 
+    var select_code = require('./api/select_code');
+    // 매출추이 API 로드
+    var sales_c1 = require('./api/sales_c1');
+    var sales_cc1 = require('./api/sales_cc1');
+    var sales_d1 = require('./api/sales_d1');
+    var sales_m1 = require('./api/sales_m1');
+    var sales_m2 = require('./api/sales_m2');
+    var sales_l1 = require('./api/sales_l1');
+    var sales_l2 = require('./api/sales_l2');
     // 입사자추이 API 로드
     var attrition_d1 = require('./api/attrition_d1');
     var attrition_s1 = require('./api/attrition_s1');
@@ -72,6 +82,18 @@ sql.connect(config).then(pool => {
     apiRouter.get('/getMenutree', getmenutree.data);
     apiRouter.get('/getuserlist', getuserlist.data);
     apiRouter.get('/members/profile', profile.data);
+
+
+    // SELECT CODE
+    apiRouter.post('/select_code', select_code.data);
+    // 매출추이 Router 연결
+    apiRouter.post('/sales_c1', sales_c1.data);
+    apiRouter.post('/sales_cc1', sales_cc1.data);
+    apiRouter.post('/sales_d1', sales_d1.data);
+    apiRouter.post('/sales_m1', sales_m1.data);
+    apiRouter.post('/sales_m2', sales_m2.data);
+    apiRouter.post('/sales_l1', sales_l1.data);
+    apiRouter.post('/sales_l2', sales_l2.data);
     // 입사자추이 Router 연결
     apiRouter.get('/attrition_d1', attrition_d1.data);
     apiRouter.get('/attrition_s1', attrition_s1.data);
