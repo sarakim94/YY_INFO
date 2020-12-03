@@ -58,7 +58,6 @@ exports.data = function(req, res) {
                 salesData.series = series;
 
                 // DASHBOARD TABLE DATA
-
                 for(var i=0; i<len; i++){
                     data = new Object();
                     data.id = i+1;

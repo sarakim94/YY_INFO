@@ -264,6 +264,14 @@
         },
         ApexDonutChart: {
           chartOptions:{
+            tooltip: {
+              y: {
+                formatter: function(value) {
+                  var num = new Number(value)
+                        return num.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                },
+              },
+            },
             legend: {
               show : true,
               position: 'bottom',
@@ -271,7 +279,7 @@
             plotOptions: {
               pie: {
                 donut: {
-                  labels: {
+                  labels: {  
                     show: true,
                     name: {
                       show: true,
@@ -289,10 +297,11 @@
                       color: undefined,
                       offsetY: 16,
                       formatter: function (val) {
-                        return val
+                        var num = new Number(val)
+                        return num.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                       }
                     },
-                     total: {
+                    total: {
                       show: true,
                       showAlways: false,
                       label: 'Total',
@@ -302,10 +311,10 @@
                       color: '#373d3f',
                       formatter: function (w) {
                         return w.globals.seriesTotals.reduce((a, b) => {
-                          return a + b
-                        }, 0)
+                          return (a + b)
+                        }, 0).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                       }
-                    },
+                    },  
                   }
                 }
               }
@@ -442,7 +451,8 @@
                     colors: '#5C90FE'
                   },
                   formatter: function(value) {
-                    return value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                    var num = new Number(value)
+                    return num.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                   }
                 },
               },
@@ -459,7 +469,8 @@
                     colors: '#00FF87'
                   },
                   formatter: function(value) {
-                    return value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                    var num = new Number(value)
+                    return num.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                   }
                 },
               },
@@ -474,7 +485,8 @@
                     colors: '#B200A2'
                   },
                   formatter: function(value) {
-                    return value.toFixed(2).toString() + '%';
+                    var num = new Number(value)
+                    return num.toFixed(2).toString()  + '%';
                   }
                 },
               },
@@ -513,7 +525,8 @@
                     colors: '#5C90FE'
                   },
                   formatter: function(value) {
-                    return value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                    var num = new Number(value)
+                    return num.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                   }
                 },
               },
@@ -530,7 +543,8 @@
                     colors: '#00FF87'
                   },
                   formatter: function(value) {
-                    return value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                    var num = new Number(value)
+                    return num.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                   }
                 },
               },
@@ -545,7 +559,8 @@
                     colors: '#B200A2'
                   },
                   formatter: function(value) {
-                    return value.toFixed(2).toString() + '%';
+                    var num = new Number(value)
+                    return num.toFixed(2).toString()  + '%';
                   }
                 },
               },
@@ -591,8 +606,6 @@
               }
             },
             yaxis: {
-              min: 0,
-              max: 3000000,
               title: {
                 text: '매출 금액',
               },
@@ -638,9 +651,7 @@
                 size: 7,
               }
             },
-            yaxis: {
-              min: 0,
-              max: 3000000,
+            yaxis: [{
               title: {
                 text: '수금 금액',
               },
@@ -649,7 +660,7 @@
                   return value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                 }
               },
-            }
+            }]
           },
           series: [],
         },
@@ -781,11 +792,12 @@
       this.ApexMixChart2.series = await this.getMixData2();
 
       var lineData1 = await this.getLineData();
-      this.ApexLineChart.chartOptions = lineData1.chartOptions;
+      this.ApexLineChart.chartOptions.xaxis = lineData1.chartOptions.xaxis;
       this.ApexLineChart.series = lineData1.series;
 
+
       var lineData2 = await this.getLineData2();
-      this.ApexLineChart2.chartOptions = lineData2.chartOptions;
+      this.ApexLineChart2.chartOptions.xaxis = lineData2.chartOptions.xaxis;
       this.ApexLineChart2.series = lineData2.series;
     },
   };

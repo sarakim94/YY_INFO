@@ -35,8 +35,8 @@ exports.data = function(req, res) {
     chart.chartOptions.markers.hover = new Object();
     chart.chartOptions.markers.hover.size = 7;
     chart.chartOptions.yaxis = new Object();
-//  chart.chartOptions.yaxis.min = 0;
-//  chart.chartOptions.yaxis.max = 3000000;
+    chart.chartOptions.yaxis.min = 0;
+    chart.chartOptions.yaxis.max = 3000000;
     chart.chartOptions.yaxis.title = new Object();
     chart.chartOptions.yaxis.title.text = '매출 금액';
 
