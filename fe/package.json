@@ -1,7 +1,7 @@
 {
-  "name": "nuxt-argon-dashboard-pro",
+  "name": "yy-mis-dashboard",
   "version": "1.0.0",
-  "description": "Nuxt version of the Vue Argon Dashboard Pro",
+  "description": "Nuxt version of the Vue YY Dashboard",
   "author": "Creative Tim",
   "private": true,
   "scripts": {
