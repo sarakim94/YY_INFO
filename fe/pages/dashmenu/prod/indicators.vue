@@ -153,8 +153,6 @@
                 {
                     seriesName: '인건비',
                     tickAmount: 5,
-                    max: 5000000,
-                    min: 250000,
                     decimalsInFloat: 0,
                     labels: {
                     formatter: function(value) {
@@ -215,8 +213,6 @@
                 {
                     seriesName: '생산금액',
                     tickAmount: 5,
-                    max: 35000000,
-                    min: 0,
                     decimalsInFloat: 0,
                     labels: {
                     formatter: function(value) {
