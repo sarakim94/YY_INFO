@@ -603,7 +603,7 @@
               curve: 'smooth'
             },
             xaxis: {
-              categories: ['2011','2012','2013','2014','2015','2016','2017','2018','2019','2020'],
+              categories: [],
             },
             fill: {
               type: 'gradient',
@@ -699,12 +699,12 @@
       },
       async updateDropdowns3(index) {
         var lineData1 = await this.getLineData(index);
-        this.ApexLineChart.chartOptions.xaxis = lineData1.chartOptions.xaxis;
+        this.ApexLineChart.chartOptions = lineData1.chartOptions;
         this.ApexLineChart.series = lineData1.series;
       },
       async updateDropdowns4(index) {
         var lineData2 = await this.getLineData2(index);
-        this.ApexLineChart2.chartOptions.xaxis = lineData2.chartOptions.xaxis;
+        this.ApexLineChart2.chartOptions = lineData2.chartOptions;
         this.ApexLineChart2.series = lineData2.series;
       },
 
@@ -832,12 +832,12 @@
       this.ApexMixChart2.series = await this.getMixData2();
 
       var lineData1 = await this.getLineData();
-      this.ApexLineChart.chartOptions.xaxis = lineData1.chartOptions.xaxis;
+      this.ApexLineChart.chartOptions = lineData1.chartOptions;
       this.ApexLineChart.series = lineData1.series;
 
 
       var lineData2 = await this.getLineData2();
-      this.ApexLineChart2.chartOptions.xaxis = lineData2.chartOptions.xaxis;
+      this.ApexLineChart2.chartOptions = lineData2.chartOptions;
       this.ApexLineChart2.series = lineData2.series;
     },
   };
