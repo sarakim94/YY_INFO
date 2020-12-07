@@ -12,7 +12,7 @@
                             type="gradient-red"
                             sub-title=""
                             icon="ni ni-fat-delete">
-                    <span class="h2">{{ CardData.sales | currency }}</span>  
+                    <span class="h3">{{ CardData.sales | currency }}</span>  
                   <template slot="footer">
                     <span class="h1 text-warning mr-2"><i class="fa fa-arrow-down"></i> {{ CardData.s_ratio | fixed  }}% <br /> </span>
                     <span class="text-nowrap">작년 대비 매출 성장</span>
@@ -24,7 +24,7 @@
                             type="gradient-green"
                             sub-title=""
                             icon="ni ni-fat-add">
-                    <span class="h2">{{ CardData.sales | currency }}</span>  
+                    <span class="h3">{{ CardData.sales | currency }}</span>  
                   <template slot="footer">
                     <span class="h1 text-success mr-2"><i class="fa fa-arrow-up"></i> {{ CardData.s_ratio | fixed }}% <br /> </span>
                     <span class="text-nowrap">작년 대비 매출 성장</span>
@@ -37,7 +37,7 @@
                             type="gradient-red"
                             sub-title=""
                             icon="ni ni-fat-delete">
-                    <span class="h2">{{ CardData.money | currency }}</span>  
+                    <span class="h3">{{ CardData.money | currency }}</span>  
                   <template slot="footer">
                     <span class="h1 text-warning mr-2"><i class="fa fa-arrow-down"></i> {{ CardData.m_ratio | fixed  }}% <br /> </span>
                     <span class="text-nowrap">작년 대비 수금 성장</span>
@@ -49,7 +49,7 @@
                             type="gradient-green"
                             sub-title=""
                             icon="ni ni-fat-add">
-                    <span class="h2">{{ CardData.money | currency }}</span>  
+                    <span class="h3">{{ CardData.money | currency }}</span>  
                   <template slot="footer">
                     <span class="h1 text-success mr-2"><i class="fa fa-arrow-up"></i> {{ CardData.m_ratio | fixed }}% <br /> </span>
                     <span class="text-nowrap">작년 대비 수금 성장</span>
@@ -460,6 +460,7 @@
             },
             yaxis: [
               {
+                max : 15000000000,
                 tickAmount: 5,
                 axisTicks: {
                   show: true,
@@ -652,7 +653,7 @@
               curve: 'smooth'
             },
             xaxis: {
-              categories: ['2011','2012','2013','2014','2015','2016','2017','2018','2019','2020'],
+              categories: [],
             },
             fill: {
               type: 'gradient',
