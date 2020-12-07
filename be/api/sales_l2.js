@@ -34,27 +34,15 @@ exports.data = function(req, res) {
     chart.chartOptions.markers.storkeWidth = 2;
     chart.chartOptions.markers.hover = new Object();
     chart.chartOptions.markers.hover.size = 7;
-    chart.chartOptions.yaxis = new Array();
-//    chart.chartOptions.yaxis.min = 0;
-//    chart.chartOptions.yaxis.max = 3000000;
-    var object = new Object();
-    object.title = new Object();
-    object.title.text = '수금 금액(BackEnd)';
-    object.labels = new Object();
-
-    object.labels.formatter = new Object();
-    object.labels.formatter = function formatter(value)
-    {
-        return value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
-
-    chart.chartOptions.yaxis.push(object);
+    chart.chartOptions.yaxis = new Object();
+    chart.chartOptions.yaxis.title = new Object();
+    chart.chartOptions.yaxis.title.text = '수금 금액';
 
     chart.series = new Array();
     var tmp = new Object();
     tmp.name = '수금실적';
     tmp.data = new Array();
-
+    
     return global.pool.request()
     .input('YYYY', year)
     .input('TYPE', 'L2')

@@ -96,9 +96,9 @@
 
                     <div class="row mr-3" >
                       <base-input label="">
-                        <el-select v-model="selects.type" filterable
-                                    placeholder="Type select" @change="updateDropdowns">
-                          <el-option v-for="option in selectOptions"
+                        <el-select v-model="selects1.type" filterable
+                                    placeholder="Type select" @change="updateDropdowns1">
+                          <el-option v-for="option in selectOptions1"
                                       :key="option.label"
                                       :label="option.label"
                                       :value="option.value">
@@ -144,9 +144,9 @@
 
                     <div class="row mr-3" >
                       <base-input label="">
-                        <el-select v-model="selects.type" filterable
-                                    placeholder="Type select" @change="updateDropdowns">
-                          <el-option v-for="option in selectOptions"
+                        <el-select v-model="selects2.type" filterable
+                                    placeholder="Type select" @change="updateDropdowns2">
+                          <el-option v-for="option in selectOptions2"
                                       :key="option.label"
                                       :label="option.label"
                                       :value="option.value">
@@ -176,9 +176,9 @@
 
                     <div class="row mr-3" >
                       <base-input label="">
-                        <el-select v-model="selects.type" filterable
-                                    placeholder="Type select" @change="updateDropdowns">
-                          <el-option v-for="option in selectOptions"
+                        <el-select v-model="selects3.type" filterable
+                                    placeholder="Type select" @change="updateDropdowns3">
+                          <el-option v-for="option in selectOptions3"
                                       :key="option.label"
                                       :label="option.label"
                                       :value="option.value">
@@ -204,9 +204,9 @@
 
                     <div class="row mr-3" >
                       <base-input label="">
-                        <el-select v-model="selects.type" filterable
-                                    placeholder="Type select" @change="updateDropdowns">
-                          <el-option v-for="option in selectOptions"
+                        <el-select v-model="selects4.type" filterable
+                                    placeholder="Type select" @change="updateDropdowns4">
+                          <el-option v-for="option in selectOptions4"
                                       :key="option.label"
                                       :label="option.label"
                                       :value="option.value">
@@ -254,9 +254,25 @@
     data() {
       return {
         year: new Date().getFullYear(),
-        selectOptions: [
+        selectOptions1: [
         ],
-        selects: {
+        selects1: {
+          type: '%',
+        },
+        selectOptions2: [
+        ],
+        selects2: {
+          type: '%',
+        },
+        selectOptions3: [
+        ],
+        selects3: {
+          type: '%',
+        },
+        selectOptions4: [
+        ],
+        selects4: {
+          type: '%',
         },
         CardData : {
         },
@@ -444,7 +460,6 @@
             },
             yaxis: [
               {
-                max : 100000,
                 tickAmount: 5,
                 axisTicks: {
                   show: true,
@@ -461,7 +476,6 @@
               },
               {
                 show : false,
-                max : 100000,
                 tickAmount: 5,
                 opposite: true,
                 axisTicks: {
@@ -521,7 +535,6 @@
             },
             yaxis: [
               {
-                max : 100000,
                 tickAmount: 5,
                 axisTicks: {
                   show: true,
@@ -538,7 +551,6 @@
               },
               {
                 show : false,
-                max : 100000,
                 tickAmount: 5,
                 opposite: true,
                 axisTicks: {
@@ -679,7 +691,21 @@
       };
     },
     methods : {
-      async updateDropdowns(index) {
+      async updateDropdowns1(index) {
+        this.ApexMixChart.series = await this.getMixData(index);
+      },
+      async updateDropdowns2(index) {
+        this.ApexMixChart.series = await this.getMixData(index);
+      },
+      async updateDropdowns3(index) {
+        var lineData1 = await this.getLineData(index);
+        this.ApexLineChart.chartOptions.xaxis = lineData1.chartOptions.xaxis;
+        this.ApexLineChart.series = lineData1.series;
+      },
+      async updateDropdowns4(index) {
+        var lineData2 = await this.getLineData2(index);
+        this.ApexLineChart2.chartOptions.xaxis = lineData2.chartOptions.xaxis;
+        this.ApexLineChart2.series = lineData2.series;
       },
 
       async getCardData() {
@@ -788,8 +814,10 @@
     },
     async created () {
       this.$store.commit('SET_TITLE', '매출수금현황');
-      this.selectOptions = await this.getSelectOptions();
-      this.selects.type = this.selectOptions[0].value;
+      this.selectOptions1 = await this.getSelectOptions();
+      this.selectOptions2 = await this.getSelectOptions();
+      this.selectOptions3 = await this.getSelectOptions();
+      this.selectOptions4 = await this.getSelectOptions();
 
       this.CardData = await this.getCardData();
       this.CircleData = await this.getCircleData();
