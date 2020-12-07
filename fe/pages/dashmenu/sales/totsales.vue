@@ -695,7 +695,7 @@
         this.ApexMixChart.series = await this.getMixData(index);
       },
       async updateDropdowns2(index) {
-        this.ApexMixChart.series = await this.getMixData(index);
+        this.ApexMixChart2.series = await this.getMixData2(index);
       },
       async updateDropdowns3(index) {
         var lineData1 = await this.getLineData(index);
