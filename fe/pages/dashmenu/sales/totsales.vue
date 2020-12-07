@@ -427,6 +427,9 @@
         ApexMixChart: {
           chartOptions : {
             chart : {
+              toolbar: {
+                  show: false
+              },
               type: 'line',
             },
             colors: ['#5C90FE', '#00FF87','#B200A2'],
@@ -501,6 +504,9 @@
         ApexMixChart2: {
           chartOptions : {
             chart : {
+              toolbar: {
+                  show: false
+              },
               type: 'line',
             },
             colors: ['#5C90FE', '#00FF87','#B200A2'],
@@ -575,6 +581,9 @@
         ApexLineChart: {
           chartOptions : {
             chart : {
+              toolbar: {
+                  show: false
+              },
               type: 'line',
             },  
             stroke: {
@@ -621,6 +630,9 @@
         ApexLineChart2: {
           chartOptions : {
             chart : {
+              toolbar: {
+                  show: false
+              },
               type: 'line',
             },  
             stroke: {

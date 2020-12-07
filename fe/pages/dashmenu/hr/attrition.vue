@@ -279,7 +279,10 @@
 
         ApexScatterChart: {
           chartOptions:{
-            chart: {
+            chart: {      
+              toolbar: {
+                  show: false
+              },
               type: 'scatter',
             },
             fill: {
@@ -315,6 +318,9 @@
         ApexBarChart: {
           chartOptions:{
             chart: {
+              toolbar: {
+                  show: false
+              },
               type: 'bar',
             },
             fill: {
@@ -396,6 +402,9 @@
           chartOptions:{
             colors: ['#48C278', '#FF4646'],
             chart: {
+              toolbar: {
+                  show: false
+              },
               type: 'line',
             },
             stroke: {
@@ -477,6 +486,9 @@
         ApexMixChart: {
           chartOptions : {
             chart : {
+              toolbar: {
+                  show: false
+              },
               type: 'line',
             },
             colors: ['#5C90FE', '#FE5C5C','#00FF00'],

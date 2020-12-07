@@ -115,6 +115,9 @@
         ApexBarChart: {
             chartOptions: {
                 chart: {
+                    toolbar : {
+                        show : false,
+                    },
                     height: 400,
                     type: 'bar',
                 },
@@ -170,6 +173,9 @@
         ApexBarChart2: {
             chartOptions: {
                 chart: {
+                    toolbar : {
+                        show : false,
+                    },
                     height: 400,
                     type: 'bar',
                 },                
@@ -229,7 +235,10 @@
         },
         ApexBarChart3: {
             chartOptions: {
-                chart: {
+                chart: {    
+                    toolbar: {
+                        show: false
+                    },
                     height: 400,
                     type: 'bar',
                 },                
@@ -332,7 +341,10 @@
         },
         ApexMixChart: {
             chartOptions: {
-                chart: {
+                chart: {      
+                    toolbar: {
+                        show: false
+                    },
                     height: 400,
                     type: 'line',
                 },
@@ -376,7 +388,10 @@
         },
         ApexMixChart2: {
             chartOptions: {
-                chart: {
+                chart: {      
+                    toolbar: {
+                        show: false
+                    },
                     height: 400,
                     type: 'line',
                 },
