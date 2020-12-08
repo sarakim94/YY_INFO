@@ -37,6 +37,7 @@
             </section>
             <!-- 1st Hero Variation -->
         </div>
+        <!--
         <section class="mt-4 section section-lg">
             <div class="container">
                 <div class="row justify-content-center text-center mb-lg">
@@ -135,7 +136,7 @@
                 </div>
             </div>
         </section>
-        
+        -->
         <br />
         
         <section class="section section-lg">
