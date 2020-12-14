@@ -7,12 +7,7 @@ exports.data = function(req, res) {
 
         var query = '';
 
-        if(id === 'admin'){
-            query = 'SELECT A.NAME AS NAME, A.PATH AS PATH FROM DASH_MENU A LEFT JOIN DASH_MENU_AUTH B ON A.ID = B.PGID WHERE A.P_ID = @PGID GROUP BY A.ID,A.NAME,A.PATH';
-        }
-        else{
-            query = 'SELECT A.NAME AS NAME, A.PATH AS PATH FROM DASH_MENU A LEFT JOIN DASH_MENU_AUTH B ON A.ID = B.PGID WHERE A.P_ID = @PGID AND B.EMP_CD = @EMP_CD';
-        }
+        query = 'SELECT A.NAME AS NAME, A.PATH AS PATH FROM DASH_MENU A LEFT JOIN DASH_MENU_AUTH B ON A.ID = B.PGID WHERE A.P_ID = @PGID AND B.EMP_CD = @EMP_CD';
 
         return global.pool.request()
         .query('SELECT ID,NAME,ICON FROM DASH_MENU WHERE LV = 0 ORDER BY ID')

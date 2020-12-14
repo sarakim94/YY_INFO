@@ -9,46 +9,25 @@ exports.data = async function(req, res) {
         const pw = req.body.password;
         
         console.log('GET ToKen API Start~');
-        // 관리자인 경우 
-        if (id === 'admin') {
-            if(pw === '@yoo6114'){
+
+        await global.pool.request()
+        .input('ID', id)
+        .input('PW', pw)
+        .execute('DASH_LOGIN')
+        .then(result => {
+            if (result.recordset.length === 0) {
+                res.status(401).json({ message: 'Bad credentials' })
+            }
+            else {
                 token = jwt.sign(id,secret);
-            
                 data = new Object();
-                data = { 
-                    key: token,
-                    user: {
-                        emp_cd: 'admin', emp_nm: '시스템관리자', dept_cd: '10050000', dept_nm: '전산팀'	
-                    }
-                }
+                data.key = token;
+                data.user = result.recordset[0];
             }
-            else{
-                // 관리자 PW가 틀렸을 경우
-                return res.status(401).json({ message: 'Bad credentials' })
-            }
-        }
-        // 일반 사용자인 경우
-        else{
-            await global.pool.request()
-            .input('ID', id)
-            .input('PW', pw)
-            .execute('DASH_LOGIN')
-            .then(result => {
-                if (result.recordset.length === 0) {
-                    res.status(401).json({ message: 'Bad credentials' })
-                }
-                else {
-                    token = jwt.sign(id,secret);
-                    data = new Object();
-                    data.key = token;
-                    data.user = result.recordset[0];
-                }
-            })
-            .catch(err => {
-                console.log(err.message)
-            })
-        }
-        
+        })
+        .catch(err => {
+            console.log(err.message)
+        })
         
         await global.pool.request()
         .input('TOKEN', data.key)

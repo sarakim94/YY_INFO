@@ -15,46 +15,25 @@ module.exports = function(app)
             const pw = req.body.password;
             
             console.log('GET ToKen API Start~');
-            // 관리자인 경우 
-            if (id === 'admin') {
-                if(pw === '@yoo6114'){
+          
+            await pool.request()
+            .input('ID', id)
+            .input('PW', pw)
+            .execute('DASH_LOGIN')
+            .then(result => {
+                if (result.recordset.length === 0) {
+                    res.status(401).json({ message: 'Bad credentials' })
+                }
+                else {
                     token = jwt.sign(id,secret);
-                
                     data = new Object();
-                    data = { 
-                        key: token,
-                        user: {
-                            emp_cd: 'admin', emp_nm: '시스템관리자', dept_cd: '10050000', dept_nm: '전산팀'	
-                        }
-                    }
+                    data.key = token;
+                    data.user = result.recordset[0];
                 }
-                else{
-                    // 관리자 PW가 틀렸을 경우
-                    return res.status(401).json({ message: 'Bad credentials' })
-                }
-            }
-            // 일반 사용자인 경우
-            else{
-                await pool.request()
-                .input('ID', id)
-                .input('PW', pw)
-                .execute('DASH_LOGIN')
-                .then(result => {
-                    if (result.recordset.length === 0) {
-                        res.status(401).json({ message: 'Bad credentials' })
-                    }
-                    else {
-                        token = jwt.sign(id,secret);
-                        data = new Object();
-                        data.key = token;
-                        data.user = result.recordset[0];
-                    }
-                })
-                .catch(err => {
-                    console.log(err.message)
-                })
-            }
-            
+            })
+            .catch(err => {
+                console.log(err.message)
+            })
             
             await pool.request()
             .input('TOKEN', data.key)
@@ -90,18 +69,11 @@ module.exports = function(app)
             try {
                 var id = jwt.verify(token, secret);
 
-                if(id === 'admin'){
-                    return res.json({
-                        emp_cd: 'admin', emp_nm: '시스템관리자', dept_cd: '10050000', dept_nm: '전산팀'	
-                    })
-                }
-
                 var query     = 'SELECT A.ID AS emp_cd, B.EMP_NM AS emp_nm, C.DEPT_CD AS dept_cd, C.DEPT_NM AS dept_nm ' ;
                 query = query + 'FROM DASH_TOKEN A ';
                 query = query + 'LEFT JOIN CM004M01 B ON A.ID = B.EMP_CD ';
                 query = query + 'LEFT JOIN CM003M01 C ON B.DEPT_CD = C.DEPT_CD ';
                 query = query + 'WHERE A.ID = @ID ';
-
                 
                 return pool.request()
                 .input('ID',id)
@@ -207,12 +179,7 @@ module.exports = function(app)
 
             var query = '';
 
-            if(id === 'admin'){
-                query = 'SELECT A.NAME AS NAME, A.PATH AS PATH FROM DASH_MENU A LEFT JOIN DASH_MENU_AUTH B ON A.ID = B.PGID WHERE A.P_ID = @PGID GROUP BY A.ID,A.NAME,A.PATH';
-            }
-            else{
-                query = 'SELECT A.NAME AS NAME, A.PATH AS PATH FROM DASH_MENU A LEFT JOIN DASH_MENU_AUTH B ON A.ID = B.PGID WHERE A.P_ID = @PGID AND B.EMP_CD = @EMP_CD';
-            }
+            query = 'SELECT A.NAME AS NAME, A.PATH AS PATH FROM DASH_MENU A LEFT JOIN DASH_MENU_AUTH B ON A.ID = B.PGID WHERE A.P_ID = @PGID AND B.EMP_CD = @EMP_CD';
             
             console.log('GET MENU API Start~');
 

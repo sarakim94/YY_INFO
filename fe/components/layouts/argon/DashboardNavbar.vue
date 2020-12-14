@@ -33,7 +33,7 @@
         <a v-if="this.$auth.loggedIn" href="#" class="nav-link pr-0" @click.prevent slot="title-container">
           <div class="media align-items-center">
                   <span class="avatar avatar-sm rounded-circle">
-                    <img v-if="user.emp_cd === 'admin'" alt="Image placeholder" src="/img/theme/setter.jpg">
+                    <img v-if="user.dept_cd === '10050000'" alt="Image placeholder" src="/img/theme/setter.jpg">
                     <img v-else alt="Image placeholder" src="/img/theme/profile.jpg">
                   </span>
             <div class="media-body ml-2 d-none d-lg-block">
@@ -55,7 +55,7 @@
           </a>
         </template>
       </base-dropdown>
-      <div v-if="user.emp_cd === 'admin'" class="ml-3">
+      <div v-if="user.dept_cd === '10050000'" class="ml-3">
         <base-button style="border:0;outline:0;background-color:transparent" tag="a" href="javascript:void(0)" icon="ni ni-settings" rounded icon-only @click="settings"></base-button>
       </div>
     </ul>

@@ -12,7 +12,7 @@
         </sidebar-item>
 
         
-        <sidebar-item v-if="user.emp_cd === 'admin'" :link="{
+        <sidebar-item v-if="user.dept_cd === '10050000'" :link="{
                   name: 'Examples',
                   icon: 'ni ni-ungroup text-orange'
                   }">
@@ -26,7 +26,7 @@
 
         </sidebar-item>
 
-        <sidebar-item v-if="user.emp_cd === 'admin'" :link="{
+        <sidebar-item v-if="user.dept_cd === '10050000'" :link="{
                   name: 'Components',
                   icon: 'ni ni-ui-04 text-info'
                 }">
@@ -37,13 +37,13 @@
           <sidebar-item :link="{ name: 'Icons', path: '/components/icons' }"/>
           <sidebar-item :link="{ name: 'Typography', path: '/components/typography' }"/>
 
-          <sidebar-item v-if="user.emp_cd === 'admin'" :link="{ name: 'Multi Level' }">
+          <sidebar-item v-if="user.dept_cd === '10050000'" :link="{ name: 'Multi Level' }">
             <sidebar-item :link="{ name: 'Third level menu', path:'#' }"/>
             <sidebar-item :link="{ name: 'Just another link', path:'#' }"/>
             <sidebar-item :link="{ name: 'One last link', path:'#' }"/>
           </sidebar-item>
         </sidebar-item>
-        <sidebar-item v-if="user.emp_cd === 'admin'" :link="{
+        <sidebar-item v-if="user.dept_cd === '10050000'" :link="{
                         name: 'Forms',
                         icon: 'ni ni-single-copy-04 text-pink'
                       }">
@@ -52,7 +52,7 @@
           <sidebar-item :link="{ name: 'Validation', path: '/forms/validation' }"/>
         </sidebar-item>
 
-        <sidebar-item v-if="user.emp_cd === 'admin'" :link="{
+        <sidebar-item v-if="user.dept_cd === '10050000'" :link="{
                         name: 'Tables',
                         icon: 'ni ni-align-left-2 text-default'
                       }">
@@ -61,21 +61,21 @@
           <sidebar-item :link="{ name: 'Paginated Tables', path: '/tables/paginated' }"/>
         </sidebar-item>
 
-        <sidebar-item v-if="user.emp_cd === 'admin'" :link="{
+        <sidebar-item v-if="user.dept_cd === '10050000'" :link="{
                         name: 'Maps',
                         icon: 'ni ni-map-big text-primary'
                       }">
           <sidebar-item :link="{ name: 'Google', path: '/maps/google' }"/>
           <sidebar-item :link="{ name: 'Vector', path: '/maps/vector' }"/>
         </sidebar-item>
-        <sidebar-item v-if="user.emp_cd === 'admin'"
+        <sidebar-item v-if="user.dept_cd === '10050000'"
           :link="{
             name: 'Widgets',
             icon: 'ni ni-archive-2 text-green',
             path: '/widgets'
           }">
         </sidebar-item>
-        <sidebar-item v-if="user.emp_cd === 'admin'"
+        <sidebar-item v-if="user.dept_cd === '10050000'"
           :link="{
             name: 'Charts',
             icon: 'ni ni-chart-pie-35 text-info',
@@ -83,7 +83,7 @@
           }">
         </sidebar-item>
 
-        <sidebar-item v-if="user.emp_cd === 'admin'"
+        <sidebar-item v-if="user.dept_cd === '10050000'"
           :link="{
             name: 'Calendar',
             icon: 'ni ni-calendar-grid-58 text-red',
