@@ -325,16 +325,6 @@
             },
             fill: {
               type: 'gradient',
-              gradient: {
-                  shade: 'light',
-                  type: "horizontal",
-                  shadeIntensity: 0.25,
-                  gradientToColors: undefined,
-                  inverseColors: true,
-                  opacityFrom: 0.85,
-                  opacityTo: 0.85,
-                  stops: [50, 0, 100]
-              },
             },
             plotOptions: {
               bar: {

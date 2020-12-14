@@ -126,24 +126,9 @@
                 },
                 fill: {
                     type: 'gradient',
-                    gradient: {
-                        shade: 'light',
-                        type: "horizontal",
-                        shadeIntensity: 0.25,
-                        gradientToColors: undefined,
-                        inverseColors: true,
-                        opacityFrom: 0.85,
-                        opacityTo: 0.85,
-                        stops: [50, 0, 100]
-                    },
                 },
                 stroke: {
-                    width: 2
-                },
-                grid: {
-                    row: {
-                        colors: ['#fff', '#f2f2f2']
-                    }
+                    width: [0, 4]
                 },
                 xaxis: {
                     labels: {
@@ -181,16 +166,6 @@
                 },                
                 fill: {
                     type: 'gradient',
-                    gradient: {
-                        shade: 'light',
-                        type: "horizontal",
-                        shadeIntensity: 0.25,
-                        gradientToColors: undefined,
-                        inverseColors: true,
-                        opacityFrom: 0.85,
-                        opacityTo: 0.85,
-                        stops: [50, 0, 100]
-                    },
                 },
                 plotOptions: {
                     bar: {
@@ -201,12 +176,7 @@
                     enabled: false
                 },
                 stroke: {
-                    width: 2
-                },
-                grid: {
-                    row: {
-                        colors: ['#fff', '#f2f2f2']
-                    }
+                    width: [0, 4]
                 },
                 xaxis: {
                     labels: {
@@ -244,16 +214,6 @@
                 },                
                 fill: {
                     type: 'gradient',
-                    gradient: {
-                        shade: 'light',
-                        type: "horizontal",
-                        shadeIntensity: 0.25,
-                        gradientToColors: undefined,
-                        inverseColors: true,
-                        opacityFrom: 0.85,
-                        opacityTo: 0.85,
-                        stops: [50, 0, 100]
-                    },
                 },
                 plotOptions: {
                     bar: {
@@ -264,15 +224,10 @@
                     enabled: false
                 },
                 stroke: {
-                    width: 2
+                    width: [0, 4]
                 },
                 title: {
                     text: '천만원<단위>'
-                },
-                grid: {
-                    row: {
-                        colors: ['#fff', '#f2f2f2']
-                    }
                 },
                 xaxis: {
                     labels: {
@@ -350,16 +305,6 @@
                 },
                 fill: {
                     type: 'gradient',
-                    gradient: {
-                        shade: 'light',
-                        type: "horizontal",
-                        shadeIntensity: 0.25,
-                        gradientToColors: undefined,
-                        inverseColors: true,
-                        opacityFrom: 0.85,
-                        opacityTo: 0.85,
-                        stops: [50, 0, 100]
-                    },
                 },
                 stroke: {
                     width: [0, 4]
@@ -397,16 +342,6 @@
                 },
                 fill: {
                     type: 'gradient',
-                    gradient: {
-                        shade: 'light',
-                        type: "horizontal",
-                        shadeIntensity: 0.25,
-                        gradientToColors: undefined,
-                        inverseColors: true,
-                        opacityFrom: 0.85,
-                        opacityTo: 0.85,
-                        stops: [50, 0, 100]
-                    },
                 },
                 stroke: {
                     width: [0, 4]

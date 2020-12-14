@@ -49,6 +49,12 @@ sql.connect(config).then(pool => {
     var sales_m2 = require('./api/sales_m2');
     var sales_l1 = require('./api/sales_l1');
     var sales_l2 = require('./api/sales_l2');
+    // 매출추이 팀 API 로드
+    var tsales_l1 = require('./api/tsales_l1');
+    var tsales_l2 = require('./api/tsales_l2');
+    var tsales_b1 = require('./api/tsales_b1');
+    var tsales_b2 = require('./api/tsales_b2');
+    var tsales_b3 = require('./api/tsales_b3');
     // 입사자추이 API 로드
     var attrition_d1 = require('./api/attrition_d1');
     var attrition_s1 = require('./api/attrition_s1');
@@ -94,6 +100,12 @@ sql.connect(config).then(pool => {
     apiRouter.post('/sales_m2', sales_m2.data);
     apiRouter.post('/sales_l1', sales_l1.data);
     apiRouter.post('/sales_l2', sales_l2.data);
+    // 매출추이 팀 Router 연결
+    apiRouter.post('/tsales_l1', tsales_l1.data);
+    apiRouter.post('/tsales_l2', tsales_l2.data);
+    apiRouter.post('/tsales_b1', tsales_b1.data);
+    apiRouter.post('/tsales_b2', tsales_b2.data);
+    apiRouter.post('/tsales_b3', tsales_b3.data);
     // 입사자추이 Router 연결
     apiRouter.get('/attrition_d1', attrition_d1.data);
     apiRouter.get('/attrition_s1', attrition_s1.data);

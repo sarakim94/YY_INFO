@@ -21,18 +21,6 @@ exports.data = function(req, res) {
 
     data.chartOptions.fill = new Object();
     data.chartOptions.fill.type = 'gradient';
-    data.chartOptions.fill.gradient = new Object();
-    data.chartOptions.fill.gradient.shade = 'light';
-    data.chartOptions.fill.gradient.type = 'horizontal';
-    data.chartOptions.fill.gradient.shadeIntensity = 0.25;
-    data.chartOptions.fill.gradient.gradientToColors = undefined;
-    data.chartOptions.fill.gradient.inverseColors = true;
-    data.chartOptions.fill.gradient.opacityFrom = 0.85;
-    data.chartOptions.fill.gradient.opacityTo = 0.85;
-    data.chartOptions.fill.gradient.stops = new Array();
-    data.chartOptions.fill.gradient.stops.push(50);
-    data.chartOptions.fill.gradient.stops.push(0);
-    data.chartOptions.fill.gradient.stops.push(100);
 
     data.chartOptions.stroke = new Object();
     data.chartOptions.stroke.width = new Array();
