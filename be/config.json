@@ -1,0 +1,7 @@
+{
+    "user": "sa",
+    "password": "sfaadmin",
+    "server": "192.168.0.14",
+    "database": "mdb",
+    "charset": "utf8mb4"
+}
